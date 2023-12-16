@@ -1,0 +1,57 @@
+@import "/src/ui/styles/style_diimmens.module.scss";
+@import "/src/ui/styles/style_colors.module.scss";
+
+.container {
+    padding: $padding_desktop;
+    @media (max-width: 650px) {
+        padding: $padding_mobile;
+    }
+}
+
+.block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 27px;
+    align-items: center;
+    padding: 50px;
+    background: $style_color_dark;
+
+    @media (max-width: 650px) {
+        padding: 30px;
+        flex-direction: column;
+    }
+}
+
+.info {
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 2.16px;
+    max-width: 600px;
+    margin-right: 60px;
+
+    > h3 {
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+
+        @media (max-width: 650px) {
+            font-size: 24px;
+        }
+    }
+
+    > p {
+        color: $style_color_gray;
+        margin-top: 30px;
+        font-size: 20px;
+        font-weight: 400;
+
+        @media (max-width: 650px) {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 650px) {
+        margin-bottom: 55px;
+    }
+}

@@ -1,0 +1,47 @@
+@import "@/ui/styles/style_colors.module.scss";
+@import "@/ui/styles/style_diimmens.module.scss";
+
+.switcher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    padding: 10px 10px;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    opacity: 1;
+
+    transition: opacity .3s ease;
+
+    &:hover {
+        opacity: .5;
+    }
+
+    @media (max-width: 650px) {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.default {
+    background: $style_color_gray;
+    color: $style_color_text;
+}
+
+.secondary {
+    margin-right: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $style_color_text_secondary;
+    color: $style_color_text_secondary;
+}
+
+.text {
+    font-size: 18px;
+    font-weight: 500;
+
+    @media (max-width: 650px) {
+        font-size: 16px;
+    }
+}

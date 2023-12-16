@@ -1,0 +1,44 @@
+{
+    "header_menu": {
+        "history": {
+            "name": "Foundation history",
+            "submenu": {
+                "history": "Story",
+                "mission": "Mission",
+                "methods": "Working methods"
+            }
+        },
+        "projects": {
+            "name": "Projects",
+            "submenu": {
+                "ready": "Implemented",
+                "continue": "Ongoing"
+            }
+        },
+        "partner": "Become a partner",
+        "gallery": "Gallery"
+    },
+    "header_actions": {
+        "donate": "Donate"
+    },
+    "main": {
+        "title": "United by hope: We make the future for children better",
+        "subtitle": "HelpWay Charitable Foundation"
+    },
+    "history": {
+        "title": "Foundation History"
+    },
+    "mission": {
+        "title": "Mission and Purpose",
+        "items": {
+            "first": "Provide children with opportunities to live and develop",
+            "second": "Expand horizons and nurture children's talents",
+            "third": "Ensure access to education and medical care",
+            "fourth": "Restore childhood and offer love and support",
+            "fifth": "Build a stable and safe environment for children",
+            "six": "Foster their physical, psychological, and social development"
+        }
+    },
+    "donate": "Donate",
+    "our_projects": "Our projects"
+}

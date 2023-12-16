@@ -1,0 +1,33 @@
+@import "/src/ui/styles/style_colors.module.scss";
+@import "/src/ui/styles/style_diimmens.module.scss";
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: $padding_desktop;
+
+    @media (max-width: 1000px) {
+        padding: $padding_mobile;
+    }
+
+    @media (max-width: 650px) {
+        padding: 0;
+        margin-bottom: 60px;
+    }
+
+    > h3 {
+        color: $style_color_text;
+        font-size: 32px;
+        font-weight: 700;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 120px;
+
+        @media (max-width: 650px) {
+            font-size: 24px;
+            margin-top: 80px;
+            margin-bottom: 80px;
+        }
+    }
+}

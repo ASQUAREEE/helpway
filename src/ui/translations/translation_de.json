@@ -1,0 +1,44 @@
+{
+    "header_menu": {
+        "history": {
+            "name": "Gründungsgeschichte",
+            "submenu": {
+                "history": "Geschichte",
+                "mission": "Mission",
+                "methods": "Arbeitsmethoden"
+            }
+        },
+        "projects": {
+            "name": "Projekte",
+            "submenu": {
+                "ready": "Umgesetzt",
+                "continue": "Laufend"
+            }
+        },
+        "partner": "Ein Partner werden",
+        "gallery": "Galerie"
+    },
+    "header_actions": {
+        "donate": "Spenden"
+    },
+    "main": {
+        "title": "Hoffnung verbindet: Wir schaffen eine bessere Zukunft für Kinder",
+        "subtitle": "HelpWay Wohltätigkeitsstiftung"
+    },
+    "history": {
+        "title": "Geschichte der Vereinigung"
+    },
+    "mission": {
+        "title": "Aufgaben und Ziele",
+        "items": {
+            "first": "Den Kindern Chancen für ihr zukünftiges Leben und ihre Entwicklung bieten",
+            "second": "Horizonte erweitern und die Talente der Kinder fördern",
+            "third": "Zugang zu Bildung und medizinischer Versorgung gewährleisten",
+            "fourth": "Kindheit wiederherstellen und Liebe und Unterstützung bieten",
+            "fifth": "Ein stabiles und sicheres Umfeld für Kinder schaffen",
+            "six": "Die körperliche, psychologische und soziale Entwicklung fördern"
+        }
+    },
+    "donate": "Spenden",
+    "our_projects": "Projekte"
+}

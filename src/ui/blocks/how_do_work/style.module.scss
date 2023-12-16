@@ -1,0 +1,73 @@
+@import "/src/ui/styles/style_diimmens.module.scss";
+@import "/src/ui/styles/style_colors.module.scss";
+
+.container {
+    padding: $padding_desktop;
+    @media (max-width: 1000px) {
+        padding: $padding_mobile;
+    }
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    border-radius: 27px;
+    align-items: center;
+    padding: 50px;
+    background: $style_color_dark;
+    color: white;
+
+    > h3 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 40px;
+        width: 100%;
+
+        @media (max-width: 650px) {
+            font-size: 24px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 650px) {
+        padding: 30px;
+        flex-direction: column;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 24px;
+
+    @media (max-width: 650px) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.grid_item_index {
+    font-size: 20px;
+    font-weight: 400;
+    margin-right: 10px;
+
+    @media (max-width: 650px) {
+        font-size: 16px;
+    }
+}
+
+.grid_item_text {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.96px;
+
+    @media (max-width: 650px) {
+        font-size: 14px;
+    }
+}
+
+.grid_item {
+    display: flex;
+    flex-direction: row;
+}

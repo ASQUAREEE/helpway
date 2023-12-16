@@ -1,0 +1,8 @@
+@import "@/ui/styles/style_colors.module.scss";
+
+.header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}

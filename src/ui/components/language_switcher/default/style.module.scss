@@ -1,0 +1,26 @@
+@import "@/ui/styles/style_colors.module.scss";
+@import "@/ui/styles/style_diimmens.module.scss";
+
+.switcher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    height: 100%;
+    background: $style_color_gray;
+    padding: 5px 15px;
+    cursor: pointer;
+    opacity: 1;
+
+    transition: opacity .3s ease;
+
+    &:hover {
+        opacity: .5;
+    }
+}
+
+.text {
+    color: $style_color_text;
+    font-size: 18px;
+    font-weight: 500;
+}

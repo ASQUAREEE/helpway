@@ -1,0 +1,74 @@
+@import "/src/ui/styles/style_colors.module.scss";
+
+@keyframes clickAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(.98);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@mixin buttonBase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    padding: 13px 17px;
+    white-space: nowrap;
+
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+
+.primary {
+    @include buttonBase;
+    border-radius: 100px;
+    background-color: $style_color_green;
+    color: white;
+    transition: opacity .3s ease;
+
+    &:hover {
+        opacity: .7;
+    }
+}
+
+.outline {
+    @include buttonBase;
+    border-style: solid;
+    border-radius: 100px;
+    border-width: 1px;
+    color: $style_color_text;
+    transition: all .3s ease;
+
+    &:hover {
+        color: $style_color_green;
+        border-color: $style_color_green;
+        background-color: $style_effect_hover;
+    }
+}
+
+.click {
+    animation: clickAnimation .3s ease;
+}
+
+.text {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+}

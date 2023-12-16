@@ -1,0 +1,35 @@
+@import "/src/ui/styles/style_colors.module.scss";
+
+@keyframes clickAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(.85);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    background: $style_color_gray;
+    opacity: 1;
+
+    transition: opacity .3s ease;
+
+    &:hover {
+        opacity: .5
+    }
+}
+
+.click {
+    animation: clickAnimation .3s ease;
+}

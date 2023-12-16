@@ -1,0 +1,80 @@
+@import "/src/ui/styles/style_colors.module.scss";
+@import "/src/ui/styles/style_diimmens.module.scss";
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+
+    > h3 {
+        margin-left: $padding_desktop;
+        margin-bottom: 40px;
+        color: $style_color_text;
+        font-size: 36px;
+        font-weight: 700;
+
+        @media (max-width: 1000px) {
+            margin-left: $padding_mobile;
+        }
+
+        @media (max-width: 650px) {
+            font-size: 24px;
+            margin-top: 55px;
+            text-align: center;
+        }
+    }
+}
+
+.buttons_type_layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-left: $padding_desktop;
+    overflow: auto;
+    margin-bottom: 60px;
+
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+
+    &::-webkit-scrollbar {
+        width: 0;
+        background: transparent; /* make scrollbar transparent */
+    }
+
+    @media (max-width: 1000px) {
+        padding-left: $padding_mobile;
+    }
+
+    @media (max-width: 650px) {
+        margin-bottom: 30px;
+    }
+}
+
+.buttons_type {
+    margin-right: 16px;
+}
+
+
+.grid_container {
+    padding-left: $padding_desktop;
+    padding-right: $padding_desktop;
+
+    @media (max-width: 1000px) {
+        padding: $padding_mobile;
+    }
+}
+
+.list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 120px;
+
+    @media (max-width: 1440px) {
+        grid-gap: 60px;
+    }
+
+    @media (max-width: 650px) {
+        display: flex;
+        flex-direction: column;
+    }
+}

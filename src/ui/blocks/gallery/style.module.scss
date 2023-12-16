@@ -1,0 +1,97 @@
+@import "/src/ui/styles/style_diimmens.module.scss";
+@import "/src/ui/styles/style_colors.module.scss";
+
+.container {
+    border-radius: 27px;
+    border: 2px solid $style_color_text;
+    margin-right: $padding_desktop;
+    margin-left: $padding_desktop;
+    margin-bottom: $padding_desktop;
+
+    > h3 {
+        color: $style_color_text;
+        font-size: 20px;
+        font-weight: 700;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 40px;
+        margin-top: 40px;
+    }
+
+    @media (max-width: 650px) {
+        margin-right: $padding_mobile;
+        margin-left: $padding_mobile;
+        margin-bottom: $padding_mobile;
+    }
+}
+
+.button {
+    margin-bottom: 16px;
+
+    @media (max-width: 1000px) {
+        margin-right: 16px;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: 1000px) {
+        flex-direction: column;
+        padding: 0;
+    }
+}
+
+.folders {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 40px;
+    margin-left: 40px;
+
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+
+    &::-webkit-scrollbar {
+        width: 0;
+        background: transparent; /* make scrollbar transparent */
+    }
+
+    @media (max-width: 1000px) {
+        display: flex;
+        flex-direction: row;
+        overflow: auto;
+        margin-right: 0;
+        margin-bottom: 16px;
+        margin-left: 0;
+        padding-left: 40px;
+    }
+
+    @media (max-width: 650px) {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 16px;
+        margin-bottom: 0;
+    }
+}
+
+.images {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 16px;
+    padding: 0 40px 40px 40px;
+
+    @media (max-width: 1000px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (max-width: 650px) {
+        padding: 16px;
+        grid-gap: 6px;
+    }
+
+}
+
+.image {
+    border-radius: 15px;
+}

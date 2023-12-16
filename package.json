@@ -5,18 +5,23 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/cssinjs": "^1.18.0-alpha.5",
+    "antd": "^5.11.3",
+    "next": "14.0.3",
+    "nextjs-basic-auth-middleware": "^3.1.0",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.3"
+    "sass": "^1.69.5"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
-    "@types/react-dom": "^18"
+    "@types/react-dom": "^18",
+    "typescript": "^5"
   }
 }

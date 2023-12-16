@@ -1,0 +1,119 @@
+@import "@/ui/styles/style_colors.module.scss";
+@import "@/ui/styles/style_diimmens.module.scss";
+
+.container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px $padding_desktop;
+}
+
+.information {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo {
+    width: 90px;
+    height: 60px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.menu_item_arrow {
+    margin-top: 2px;
+    margin-left: 5px;
+    fill: $style_color_text;
+    transition: fill .3s ease;
+}
+
+.menu_item {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 6px;
+
+    color: $style_color_text;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+
+    transition: color .3s ease;
+
+    &:hover .menu_item_arrow {
+        fill: $style_color_green;
+    }
+
+    &:hover {
+        color: $style_color_green;
+    }
+}
+
+.submenu_item {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+
+    color: $style_color_text;
+    font-size: 18px;
+    font-style: normal;
+
+    transition: color .3s ease;
+
+    &:hover .submenu_item_arrow {
+        fill: $style_color_green;
+    }
+
+    &:hover {
+        color: $style_color_green;
+    }
+}
+
+.email_full {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    background: $style_color_gray;
+    border-radius: 100px;
+    padding: 5px 15px;
+
+    > p {
+        margin-left: 10px;
+        color: $style_color_text;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+    }
+}
+
+.language {
+    margin-right: 16px;
+}
+
+.email {
+    margin-right: 16px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+}

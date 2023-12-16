@@ -1,0 +1,73 @@
+@import "/src/ui/styles/style_colors.module.scss";
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    z-index: 1;
+}
+
+.green {
+    background: radial-gradient(120% 100% at 97.9% 4.17%, #D4FFD9 0%, rgba(217, 217, 217, 0.00) 100%);
+}
+
+.purple {
+    background: radial-gradient(120% 100% at 92.06% 11.31%, #DBD8FF 0%, rgba(217, 217, 217, 0.00) 100%);
+}
+
+.pink {
+    background: radial-gradient(120% 100% at 97.9% 4.17%, #FFD2ED 0%, rgba(217, 217, 217, 0.00) 100%);
+}
+
+.peache {
+    background: radial-gradient(120% 100% at 97.9% 4.17%, #FFE5E5 0%, rgba(217, 217, 217, 0.00) 100%);
+}
+
+.orange {
+    background: radial-gradient(120% 100% at 97.9% 4.17%, #FFEBB7 0%, rgba(217, 217, 217, 0.00) 100%);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-width: 220px;
+    height: 160px;
+    background: $style_color_gray;
+    border-radius: 15px;
+
+    @media (max-width: 650px) {
+        min-width: 0;
+        width: auto;
+        height: auto;
+    }
+}
+
+.title {
+    color: $style_color_text;
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    @media (max-width: 650px) {
+        font-size: 36px;
+    }
+}
+
+.text {
+    color: $style_color_text_secondary;
+    font-size: 16px;
+    font-weight: 400;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow: hidden;
+
+    @media (max-width: 400px) {
+        font-size: 14px;
+    }
+}
