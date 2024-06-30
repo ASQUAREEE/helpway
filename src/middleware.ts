@@ -1,14 +1,17 @@
-import {createNextAuthMiddleware} from 'nextjs-basic-auth-middleware'
+import {
+  clerkMiddleware,
+  createRouteMatcher
+} from '@clerk/nextjs/server';
 
-export const middleware = createNextAuthMiddleware({
-    users: [
-        {
-            name: "artevide",
-            password: "hr51kif16"
-        }
-    ]
-})
+const isProtectedRoute = createRouteMatcher([
+  
+
+]);
+
+export default clerkMiddleware((auth, req) => {
+  if (isProtectedRoute(req)) auth().protect();
+});
 
 export const config = {
-    matcher: ['/(.*)'],
-}
+  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+};
