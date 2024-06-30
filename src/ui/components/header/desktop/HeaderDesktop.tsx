@@ -1,16 +1,19 @@
 'use client'
 
-import {MenuItem} from "@/ui/components/header/Header";
+import {type MenuItem} from "@/ui/components/header/Header";
 import style from "./style.module.scss"
 import Logo from "@/../public/svg/logo_black.svg"
 import Arrow from "@/../public/svg/arrow_drop_down.svg"
 import Email from "@/../public/svg/email.svg"
-import Button from "@/ui/components/button/Button";
+import Button1 from "@/ui/components/button/Button";
 import {Popover} from "antd";
 import LanguageSwitcher from "@/ui/components/language_switcher/LanguageSwitcher";
 import {useContext} from "react";
 import {LanguageContext} from "@/utils/language/LanguageContext";
 import ButtonIcon from "@/ui/components/button_icon/ButtonIcon";
+import { SignInButton, SignOutButton, useClerk } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 function MenuItem({name, link, subItems = []}: MenuItem) {
     const content = subItems?.length > 0 ?
@@ -65,6 +68,7 @@ function MailButton({shortEmail}: MailButtonProps) {
 export default function HeaderDesktop(menuItems: MenuItem[], shortEmail: boolean, shortLanguage: boolean) {
 
     const {translations} = useContext(LanguageContext)!
+    const { user } = useClerk();
 
     const languageButtonType = shortLanguage ? "compact" : "default"
 
@@ -87,7 +91,9 @@ export default function HeaderDesktop(menuItems: MenuItem[], shortEmail: boolean
             <div className={style.actions}>
                 <MailButton shortEmail={shortEmail}/>
                 <LanguageSwitcher type={languageButtonType} customClass={style.language}/>
-                <Button text={translations.header_actions.donate} onClick={onDonateClick}/>
+                <Button1 text={translations.header_actions.donate} onClick={onDonateClick}/>
+                {!user && <Link href="/auth/sign-in"><Button className="ml-5 mt-2 rounded-3xl">Sign In</Button></Link>}
+                {user && <SignOutButton><Button className="ml-5 mt-2 rounded-3xl">Sign Out</Button></SignOutButton>}
             </div>
         </div>
     )
