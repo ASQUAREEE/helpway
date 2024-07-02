@@ -13,6 +13,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { uploadToVercelBlob } from "@/lib/vercelBlob";
+import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { LanguageContext } from "@/utils/language/LanguageContext";
 
 type User = {
     id: string;
@@ -40,6 +43,8 @@ export default function ProjectsBlock({userId}: {userId: string | undefined}) {
    const {data: projectsFromApi, isLoading, refetch} = trpc.project.getProject.useQuery()
    const [projects, setProjects] = useState<Project[]>([]);
    const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
+   const {translations} = useContext(LanguageContext)!
+    const router = useRouter()
 
    useEffect(() => {
     setProjects(projectsFromApi ?? []);
@@ -121,29 +126,31 @@ export default function ProjectsBlock({userId}: {userId: string | undefined}) {
 
     return (
         <div className={style.container} id={mainPageIds.project.ready}>
-            <h3>
-                Наші проекти
-            </h3>
-            <div className={style.buttons_type_layout}>
-                <Button1
-                    text={"Реалізовано"}
-                    customStyle={style.buttons_type}
-                    onClick={() => {
-                    }}/>
-                <Button1
-                    text={"Триває"}
-                    type={"outline"}
-                    customStyle={style.buttons_type}
-                    onClick={() => {
-                    }}/>
-                <Button1
-                    text={"Продовжується"}
-                    type={"outline"}
-                    customStyle={style.buttons_type}
-                    onClick={() => {
-                    }}/>
-            </div>
-            <div className={style.grid_container}>
+        <h3>
+            {translations.projects.title}
+        </h3>
+        <div className={style.buttons_type_layout}>
+            <Button1
+                text={translations.projects.ready}
+                customStyle={style.buttons_type}
+                onClick={() => { router.push("/project") }}
+            />
+            <Button1
+                text={translations.projects.current}
+                type={"primary_dark"}
+                customStyle={style.buttons_type}
+                onClick={() => { router.push("/project") }}
+            />
+
+            <Button1
+                text={translations.projects.regular}
+                type={"primary_dark"}
+                customStyle={style.buttons_type}
+                onClick={() => { router.push("/project") }}
+            />
+
+        </div>
+        <div className={style.grid_container}>
                 {
                     Projects(data?.role, handleOpenModal, projects, setProjects) // Pass handleOpenModal as a prop
                 }

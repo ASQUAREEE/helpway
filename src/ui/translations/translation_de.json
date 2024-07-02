@@ -1,43 +1,100 @@
 {
     "header_menu": {
         "history": {
-            "name": "Gründungsgeschichte",
+            "name": "Geschichte der Stiftung",
             "submenu": {
-                "history": "Geschichte",
+                "history": "Geschichte der Stiftung",
                 "mission": "Mission",
                 "methods": "Arbeitsmethoden"
             }
         },
         "projects": {
-            "name": "Projekte",
+            "name": "Unsere Projekte",
             "submenu": {
-                "ready": "Umgesetzt",
-                "continue": "Laufend"
+                "ready": "Durchgeführte",
+                "current": "Aktuelle",
+                "regular": "Regelmäßige"
             }
         },
-        "partner": "Ein Partner werden",
+        "partner": "Partnerschaft",
         "gallery": "Galerie"
     },
     "header_actions": {
         "donate": "Spenden"
     },
     "main": {
-        "title": "Hoffnung verbindet: Wir schaffen eine bessere Zukunft für Kinder",
-        "subtitle": "HelpWay Wohltätigkeitsstiftung"
+        "title": "Enthalte kein Gutes dem vor, welchem es zukommt, wenn es in der Macht deiner Hand steht, es zu tun.",
+        "subtitle": "Wohltätigkeitsstiftung HelpWay"
     },
     "history": {
-        "title": "Geschichte der Vereinigung"
+        "title": "Geschichte der Stiftung",
+        "subtitle": "2010 begann unsere Zusammenarbeit mit der Umsetzung von Projekten zur Unterstützung von Waisenkindern.",
+        "text1": "Mit der Gründung schufen wir eine Wohltätigkeitsstiftung, die es sich zur Aufgabe gemacht hat, Waisenkinder auf ihrem Lebensweg zu unterstützen und ihnen eine gute Kindheit zu ermöglichen. Seitdem haben wir viele Projekte durchgeführt, um das Leben der Kinder fröhlicher und glücklicher zu machen. Im Laufe der Jahre haben wir mehr als 24 Kindercamps organisiert, an denen jeweils 100 bis 180 Kinder teilgenommen haben.",
+        "text2": "Unsere Überzeugung ist, dass Kinder bei solchen Aktivitäten neue Freunde finden, zusätzliche Kenntnisse erwerben und ihre Talente entwickeln können. Für Hunderte von Kindern, die an unseren Programmen teilgenommen haben, sind dies unvergessliche Erfahrungen und bieten ein neues Umfeld. In jedem der Camps hatten Kinder die Möglichkeit etwas zu lernen, sich zu entwickeln, Kontakte zu knüpfen und die bestmögliche Kindheitserfahrung zu sammeln. Seit vier Jahren erhalten die Kinder am Ende des Camps ihre Lieblingszeitschrift \"Dein Weg\", welche wir gemeinsam mit unserem Team halbjährlich erstellen, um Erinnerungen zu bewahren und die Camps zusammenzufassen. Diese Zeitschrift ist ein Fenster in die Welt der Errungenschaften und Reisen unserer Teilnehmer, und wir sind stolz darauf, diese Geschichte bewahren zu können.",
+        "all": "Mehr anzeigen",
+        "blocks": {
+            "first": "organisierte Kindercamps",
+            "second": "Jahre Veröffentlichung des Magazins 'Dein Weg'",
+            "third": "Hauptberufliche Freiwillige",
+            "fourth": "Kinder vereint im Camp",
+            "fifth": "Internatsschulen mit einem regelmäßigen Unterstützungsprogramm"
+        }
     },
     "mission": {
         "title": "Aufgaben und Ziele",
         "items": {
-            "first": "Den Kindern Chancen für ihr zukünftiges Leben und ihre Entwicklung bieten",
+            "first": "Kindern die Möglichkeit zu einer umfassenden Entwicklung eröffnen",
             "second": "Horizonte erweitern und die Talente der Kinder fördern",
             "third": "Zugang zu Bildung und medizinischer Versorgung gewährleisten",
-            "fourth": "Kindheit wiederherstellen und Liebe und Unterstützung bieten",
-            "fifth": "Ein stabiles und sicheres Umfeld für Kinder schaffen",
+            "fourth": "Die für eine entwicklungsfördernde Kindheit bedeutsame Zuwendung und Unterstützung bieten",
+            "fifth": "Geborgenheit in einer unterstützenden und sicheren Umgebung",
             "six": "Die körperliche, psychologische und soziale Entwicklung fördern"
         }
+    },
+    "work": {
+        "title": "Unser Ansatz umfasst die folgenden Schritte:",
+        "first": "Projektplanung: Definition von Zielen, Aufgaben, Veranstaltungsort, Arbeitsumfang.",
+        "second": "Möglichkeiten zur Umsetzung suchen: Zusammenarbeit mit Partnern bei der Umsetzung von Projekten unter Nutzung aktueller und potenzieller Ressourcen.",
+        "third": "Finanzierung: Schätzung der Kosten für die Projektdurchführung und Suche nach finanzieller Unterstützung für deren Umsetzung.",
+        "fourth": "Anmeldung von Kindern für das Camp : Zusammenarbeit mit Internatsschulen, Bereitstellung unserer Hilfe und Organisation der Anmeldung von Kindern für das Camp.",
+        "fifth": "Durchführung der Projekte: Gemeinsam mit unseren Partnern, Freiwilligen und den Lehrkräften der Internatsschulen schließen wir das Camp erfolgreich ab."
+    },
+    "projects": {
+        "title": "Projekte",
+        "ready": "Durchgeführte Projekte",
+        "current": "Aktuelle",
+        "regular": "Regelmäßige Projekte",
+        "detail": "Mehr lesen"
+    },
+    "pay": {
+        "title": "Spenden",
+        "info": "Bereitwillig zu geben bedeutet mehr als zu geben",
+        "info2": "Beteiligen Sie sich an der Beschaffung von Mitteln zur Unterstützung von Waisenkindern. Wir sind unbesiegbar, wenn wir vereint sind!"
+    },
+    "partners": {
+        "title": "Partnerschaft",
+        "info": "Willkommen bei unserem Partnerschaftsprogramm!",
+        "info1": "Wir freuen uns über Ihr Interesse an einer Partnerschaft mit uns. Über das Formular können Sie die Art der Partnerschaft wählen, die Ihren Fähigkeiten und Interessen am besten entspricht. Wir sind offen für verschiedene Formen der Partnerschaft, sei es in materieller, mentaler, finanzieller oder ehrenamtlicher Hinsicht.",
+        "info2": "Machen Sie noch heute mit und werden Sie Teil des positiven Wandels!"
+    },
+    "partners_page": {
+        "info": "Um eine Partnerschaft vorzuschlagen, füllen Sie bitte das folgende Formular aus. Wir werden uns in den kommenden Arbeitstagen bei Ihnen melden.",
+        "name": "Vorname und Nachname",
+        "name_hint": "Geben Sie Ihren Vor- und Nachnamen ein",
+        "email_hint": "Geben Sie Ihre E-Mail Adresse ein",
+        "company_name": "Name der Organisation",
+        "company_name_hint": "Geben Sie den Institutsnamen ein",
+        "partnership": "Art der Partnerschaft",
+        "partnership_hint": "Wählen Sie die Art der Partnerschaft",
+        "offer": "Vorschlag",
+        "offer_hint": "Ihr Vorschlag",
+        "offer_option1": "Finanzielle Förderung",
+        "offer_option2": "Ehrenamtliche Arbeit",
+        "offer_option3": "Spende von Ausrüstung/Eigentum",
+        "send": "Schicken"
+    },
+    "footer": {
+        "home": "Hauptseite"
     },
     "donate": "Spenden",
     "our_projects": "Projekte"

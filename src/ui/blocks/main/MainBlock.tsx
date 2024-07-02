@@ -11,6 +11,7 @@ import SecondImage from "@/../public/img/mainblocksecondimg.png"
 import ArrowIcon from "@/../public/svg/arrow_link.svg"
 import {LanguageContext} from '@/utils/language/LanguageContext';
 import {mainPageIds} from "@/utils/Const";
+import {useRouter} from "next/navigation";
 
 export function MainBlock() {
 
@@ -19,13 +20,14 @@ export function MainBlock() {
     const {translations} = useContext(LanguageContext)!
     const mobileWidth = 1000
     const container = isMobile ? style.container_mobile : style.container_desktop
+    const router = useRouter()
 
     useEffect(() => {
         setIsMobile(width <= mobileWidth)
     }, [width]);
 
     function onDonateClick() {
-
+        router.push(`/#${mainPageIds.donate}`)
     }
 
     return (
@@ -38,7 +40,9 @@ export function MainBlock() {
             </div>
             <div className={style.grid_container}>
                 <Image alt={"image"} src={FirstImage} priority className={style.item_fist}/>
-                <div className={style.item_second}>
+                <div className={style.item_second} onClick={() => {
+                    router.push(`/#${mainPageIds.project.ready}`)
+                }}>
                     <div className={style.project_overlay}/>
                     <ArrowIcon className={style.project_icon}/>
                     <p className={style.project_text}>{translations.our_projects}</p>

@@ -48,6 +48,18 @@
     }
 }
 
+.primary_dark {
+    @include buttonBase;
+    border-radius: 100px;
+    background-color: $style_color_dark;
+    color: white;
+    transition: opacity .3s ease;
+
+    &:hover {
+        opacity: .7;
+    }
+}
+
 .outline {
     @include buttonBase;
     border-style: solid;
@@ -63,12 +75,27 @@
     }
 }
 
+.outline_light {
+    @include buttonBase;
+    border-style: solid;
+    border-radius: 100px;
+    border-width: 1px;
+    color: white;
+    transition: all .3s ease;
+
+    &:hover {
+        color: $style_color_green;
+        border-color: $style_color_green;
+        background-color: $style_effect_hover;
+    }
+}
+
 .click {
     animation: clickAnimation .3s ease;
 }
 
 .text {
-    font-size: 20px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
 }

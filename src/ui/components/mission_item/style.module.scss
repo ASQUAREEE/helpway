@@ -12,21 +12,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 85px;
-    height: 85px;
+    width: 65px;
+    height: 65px;
     border-radius: 100%;
     fill: #FFE5E5;
-    margin-bottom: 27px;
+    margin-bottom: 16px;
 }
 
 .text {
     color: $style_color_text;
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
     max-width: 350px;
     padding: 16px;
-
 
     @media (max-width: 650px) {
         font-size: 18px;

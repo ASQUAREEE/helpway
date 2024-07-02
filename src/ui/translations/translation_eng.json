@@ -1,43 +1,100 @@
 {
     "header_menu": {
         "history": {
-            "name": "Foundation history",
+            "name": "About Foundation",
             "submenu": {
-                "history": "Story",
+                "history": "Foundation's History",
                 "mission": "Mission",
                 "methods": "Working methods"
             }
         },
         "projects": {
-            "name": "Projects",
+            "name": "Our Projects",
             "submenu": {
                 "ready": "Implemented",
-                "continue": "Ongoing"
+                "current": "Ongoing",
+                "regular": "Regular"
             }
         },
-        "partner": "Become a partner",
+        "partner": "Partnership",
         "gallery": "Gallery"
     },
     "header_actions": {
         "donate": "Donate"
     },
     "main": {
-        "title": "United by hope: We make the future for children better",
-        "subtitle": "HelpWay Charitable Foundation"
+        "title": "Do not withhold good from those who deserve it, when it is in your power to act.",
+        "subtitle": "Charity Foundation HelpWay"
     },
     "history": {
-        "title": "Foundation History"
+        "title": "About Foundation",
+        "subtitle": "In 2010, we embarked on a joint mission to help orphans by establishing a foundation dedicated to supporting them and providing the right conditions for their well-being. Since then, we have implemented a wide range of projects aimed at improving the quality of life for children.",
+        "text1": "During this period, we have completed a significant number of initiatives to make children's lives happier and more exciting. Our efforts are aimed at creating conditions for the development of children and providing them with the opportunity to find true friends, gain new knowledge and develop their unique talents.\nWe have successfully organised more than 24 children's camps, each attended by 100 to 180 children. These activities have created unforgettable adventures and a refreshing new environment for hundreds of children who have joined our programmes. At each camp, children had the opportunity to learn, develop, socialise and have the best childhood experience possible.",
+        "text2": "At the end of each camp, for the last 4 years, children have been receiving their favourite magazine \"Your Way\", which we publish together with our team every six months to preserve memories and summarise the results of the camps. This magazine is a window into the world of achievements and journeys of our participants, and we are proud to be able to preserve this story.",
+        "all": "Show more",
+        "blocks": {
+            "first": "Conducted Camps",
+            "second": "Years of Publishing 'Your Path' Magazine",
+            "third": "Regular Volunteers",
+            "fourth": "Children enrolled in each camp",
+            "fifth": "Boarding schools within our support program"
+        }
     },
     "mission": {
         "title": "Mission and Purpose",
         "items": {
-            "first": "Provide children with opportunities to live and develop",
+            "first": "Provide children with opportunities for comprehensive growth",
             "second": "Expand horizons and nurture children's talents",
             "third": "Ensure access to education and medical care",
-            "fourth": "Restore childhood and offer love and support",
-            "fifth": "Build a stable and safe environment for children",
+            "fourth": "Provide the support and care that are important for a fulfilling childhood",
+            "fifth": "Create a sustainable and safe environment",
             "six": "Foster their physical, psychological, and social development"
         }
+    },
+    "work": {
+        "title": "Our approach includes the following steps:",
+        "first": "Project planning: Defining goals, tasks, venue, scope of work.",
+        "second": "Analysis of the implementation paths: Collaboration with partners on implementing projects involving current and potential resources.",
+        "third": "Funding: Estimating project implementation costs and seeking financial support for its execution.",
+        "fourth": "Enrolment of children in camps: Cooperation with boarding schools, offering them our opportunities and organising the enrolment of children to the camp.",
+        "fifth": "Project implementation: Through the collective efforts of partners, volunteers, and school staff in boarding schools, we successfully complete the camp implementation."
+    },
+    "projects": {
+        "title": "Our Projects",
+        "ready": "Implemented Projects",
+        "current": "Ongoing",
+        "regular": "Regular Projects",
+        "detail": "Find out more"
+    },
+    "pay": {
+        "title": "Donate",
+        "info": "Giving with a willing heart means more than giving",
+        "info2": "Join us in charity fundraising to help children in need. We are invincible when we are united!"
+    },
+    "partners": {
+        "title": "Partnership",
+        "info": "Welcome to our partnership programme!",
+        "info1": "We appreciate your interest in working with us. By filling out this form, you can choose the type of cooperation that best suits your capabilities and interests. We are open to various forms of partnership, whether it is material support, mental or financial support, or volunteering.",
+        "info2": "Join us today and become part of the positive change!"
+    },
+    "partners_page": {
+        "info": "For a partnership request, please fill out the form below. We will get back to you within a few business days.",
+        "name": "First and Last Name",
+        "name_hint": "Enter your first and last name",
+        "email_hint": "Enter your email address",
+        "company_name": "Name of the company",
+        "company_name_hint": "Enter the name",
+        "partnership": "Kind of partnership",
+        "partnership_hint": "Choose the kind of partnership",
+        "offer": "Offer",
+        "offer_hint": "Your offer",
+        "offer_option1": "Financial support",
+        "offer_option2": "Voluntary contributions",
+        "offer_option3": "Donating equipment/property",
+        "send": "Send"
+    },
+    "footer": {
+        "home": "Home page"
     },
     "donate": "Donate",
     "our_projects": "Our projects"

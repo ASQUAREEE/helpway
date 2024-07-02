@@ -15,7 +15,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { Trash } from 'lucide-react';
 
 
-export default function GalleryBlock({ userId }: { userId: string | undefined }) {
+export default function GalleryBlock({ isHeader = false, userId }: { isHeader?: boolean, userId: string | undefined }) {
     const userData = trpc.user.getUser.useMutation();
     const [images, setImages] = useState<{ userId: string; id: string; imageUrl: string; }[]>([]);
     const [role, setRole] = useState<string | undefined>(undefined);

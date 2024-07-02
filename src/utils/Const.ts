@@ -7,5 +7,8 @@ export const mainPageIds = {
         ready: "projects_ready"
     },
     partners: "partners",
-    gallery: "gallery"
+    gallery: "gallery",
+    donate: "donate"
 }
+
+export const email = "infoHelpWay@gmx.de"

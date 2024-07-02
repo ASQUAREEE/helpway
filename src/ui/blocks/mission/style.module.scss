@@ -5,7 +5,8 @@
 .container {
     display: flex;
     flex-direction: column;
-    padding: $padding_desktop;
+    padding: 0 $padding_desktop;
+    margin-top: 40px;
 
     @media (max-width: 1000px) {
         padding: $padding_mobile;
@@ -22,7 +23,7 @@
         font-weight: 700;
         width: 100%;
         text-align: center;
-        margin-bottom: 120px;
+        margin-bottom: 80px;
 
         @media (max-width: 650px) {
             font-size: 24px;
