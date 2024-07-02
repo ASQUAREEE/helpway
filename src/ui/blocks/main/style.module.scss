@@ -8,6 +8,10 @@
     align-items: center;
     padding: $padding_desktop;
     margin-top: 40px;
+    background-image: url(../../../../public/svg/world.svg);
+    background-repeat: no-repeat;
+    background-size: 65%;
+    background-position-y: 35%;
 }
 
 .logo {
@@ -32,7 +36,7 @@
 
     > h1 {
         color: $style_color_text;
-        font-size: 48px;
+        font-size: 40px;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
@@ -161,7 +165,7 @@
     padding: 20px;
     width: 100%;
     text-align: center;
-    font-size: 32px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 500;
 

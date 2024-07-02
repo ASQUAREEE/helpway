@@ -36,13 +36,46 @@
         font-size: 32px;
         font-weight: 600;
         letter-spacing: 1.92px;
-        margin-top: 40px;
 
         @media (max-width: 650px) {
             text-align: center;
             font-size: 24px;
         }
     }
+}
+
+.social_buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 24px;
+
+    @media (max-width: 650px) {
+        justify-content: center;
+    }
+
+}
+
+.social_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 350px;
+    width: 54px;
+    height: 54px;
+    border-color: $style_color_text_secondary;
+    fill: $style_color_text_secondary;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    margin-right: 16px;
+
+    transition: all .2s ease-in-out;
+
+    &:hover {
+        opacity: 0.5;
+    }
+
 }
 
 .items {
@@ -62,7 +95,7 @@
         display: block;
         cursor: pointer;
         transition: color .3s ease;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 400;
         margin-right: 16px;
         margin-bottom: 10px;
@@ -93,9 +126,8 @@
     }
 
     > p {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 400;
-        margin-bottom: 16px;
     }
 }
 
@@ -122,6 +154,17 @@
 
 }
 
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: $padding_desktop;
+    @media (max-width: 650px) {
+        margin-bottom: $padding_mobile;
+        margin-top: $padding_mobile;
+    }
+}
+
 .email_full {
     display: flex;
     flex-direction: row;
@@ -142,7 +185,7 @@
     > p {
         margin-left: 10px;
         color: $style_color_text_secondary;
-        font-size: 20px;
+        font-size: 18px;
         font-style: normal;
         font-weight: 400;
 

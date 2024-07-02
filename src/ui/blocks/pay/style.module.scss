@@ -1,0 +1,134 @@
+@import "/src/ui/styles/style_diimmens.module.scss";
+@import "/src/ui/styles/style_colors.module.scss";
+
+.container {
+    padding: 120px $padding_desktop;
+    @media (max-width: 650px) {
+        padding: $padding_mobile;
+    }
+}
+
+.info_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.header {
+    margin-bottom: 40px;
+
+    > h3 {
+        color: $style_color_text;
+        font-size: 36px;
+        font-weight: 700;
+
+        @media (max-width: 650px) {
+            font-size: 24px;
+            margin-top: 55px;
+            text-align: center;
+        }
+    }
+
+    > p {
+        color: $style_color_dark_secondary;
+        font-size: 24px;
+        font-weight: 400;
+        margin-bottom: 24px;
+        margin-top: 16px;
+        max-width: 1000px;
+
+        @media (max-width: 1000px) {
+            font-size: 18px;
+        }
+
+        @media (max-width: 650px) {
+            text-align: center;
+        }
+    }
+}
+
+.image {
+    max-width: 450px;
+    max-height: 450px;
+    border-radius: 22px;
+    object-fit: cover;
+
+    @media (max-width: 1000px) {
+        display: none;
+    }
+}
+
+.info {
+    border-radius: 27px;
+    background: $style_color_dark;
+    width: 100%;
+    color: white;
+    padding: 44px;
+    margin-left: 28px;
+
+    @media (max-width: 1200px) {
+        padding: 20px;
+        margin-left: 16px;
+    }
+
+    @media (max-width: 1000px) {
+        margin-left: 0;
+    }
+
+    > p {
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 24px;
+
+        @media (max-width: 1200px) {
+            font-size: 18px;
+        }
+    }
+}
+
+.item_container {
+    > p {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    transition: all .2s ease-in-out;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background: $style_color_dark_secondary;
+        padding: 8px;
+    }
+
+    &:hover .item_copy {
+        opacity: 1;
+    }
+}
+
+.item_copy {
+    opacity: 0;
+    margin-left: 16px;
+    transition: all .2s ease-in-out;
+}
+
+.button {
+
+    @media (max-width: 650px) {
+        width: 100%;
+    }
+}
+
+
+.spacer {
+    height: 20px;
+}

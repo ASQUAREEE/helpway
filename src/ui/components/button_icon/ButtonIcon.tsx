@@ -4,10 +4,10 @@ import {ReactElement, useState} from "react";
 interface ButtonProps {
     customClass?: string
     icon: ReactElement,
-    onClick: () => void
+    onButtonClick: () => void
 }
 
-export default function ButtonIcon({icon, onClick, customClass = ''}: ButtonProps) {
+export default function ButtonIcon({icon, onButtonClick, customClass = ''}: ButtonProps) {
 
     const [isClicked, setIsClicked] = useState(false);
 
@@ -15,7 +15,7 @@ export default function ButtonIcon({icon, onClick, customClass = ''}: ButtonProp
 
     const handleClick = () => {
         setIsClicked(true);
-        onClick()
+        onButtonClick()
         setTimeout(() => {
             setIsClicked(false);
         }, 500);

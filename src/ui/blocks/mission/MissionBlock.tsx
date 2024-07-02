@@ -3,10 +3,10 @@
 import style from './style.module.scss'
 import Contacts from "@/../public/svg/contacts.svg"
 import FacePlus from "@/../public/svg/face_plus.svg"
-import House from "@/../public/svg/roofing.svg"
-import Book from "@/../public/svg/menu_book.svg"
+import Family from "@/../public/svg/ic_family.svg"
+import School from "@/../public/svg/ic_school.svg"
 import Favourite from "@/../public/svg/favorite_border.svg"
-import Face from "@/../public/svg/face.svg"
+import Kids from "@/../public/svg/ic_kids.svg"
 import {ReactElement, useContext, useEffect, useState} from 'react';
 import MissionBlockDesctop from "@/ui/blocks/mission/desktop/MissionBlockDesctop";
 import {useWindowSize} from '@/lib/hooks/useWindowSize';
@@ -29,6 +29,7 @@ export default function MissionBlock() {
     const mobileWidth = 650
 
     useEffect(() => {
+        console.log(width)
         setIsMobile(width <= mobileWidth)
     }, [width]);
 
@@ -44,12 +45,12 @@ export default function MissionBlock() {
             text: translations.mission.items.second
         },
         {
-            icon: <House/>,
+            icon: <Family/>,
             color: "#DBD8FF",
             text: translations.mission.items.third
         },
         {
-            icon: <Book/>,
+            icon: <School/>,
             color: "#FFBFDE",
             text: translations.mission.items.fourth
         },
@@ -59,7 +60,7 @@ export default function MissionBlock() {
             text: translations.mission.items.fifth
         },
         {
-            icon: <Face/>,
+            icon: <Kids/>,
             color: "#FFD2ED",
             text: translations.mission.items.six
         }

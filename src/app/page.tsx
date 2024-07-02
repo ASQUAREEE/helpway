@@ -4,7 +4,6 @@ import Header from '@/ui/components/header/Header'
 import styles from './page.module.css'
 import {MainBlock} from "@/ui/blocks/main/MainBlock";
 import PartnersBlock from '@/ui/blocks/partners/PartnersBlock';
-import HistoryBlock from "@/ui/blocks/history/HistoryBlock";
 import HowDoWorkBlock from "@/ui/blocks/how_do_work/HowDoWorkBlock";
 import MissionBlock from "@/ui/blocks/mission/MissionBlock";
 import ProjectsBlock from "@/ui/blocks/projects/ProjectsBlock";
@@ -14,6 +13,8 @@ import { trpc } from '@/server/client';
 import { NextPage } from 'next';
 import { useClerk } from '@clerk/nextjs';
 import { useEffect } from 'react';
+import HistoryBlock from '@/ui/blocks/history/HistoryBlock';
+import PayBlock from '@/ui/blocks/pay/PayBlock';
 
 const Home: NextPage = () => {
 
@@ -37,8 +38,9 @@ const Home: NextPage = () => {
                 <MissionBlock/>
                 <HowDoWorkBlock/>
                 <ProjectsBlock userId={user?.id}/>
+                <PayBlock/>
+                <GalleryBlock userId={user?.id} isHeader/>
                 <PartnersBlock/>
-                <GalleryBlock userId={user?.id}/>
                 <Footer/>
             </div>
         </main>

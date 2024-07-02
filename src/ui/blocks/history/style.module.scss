@@ -2,7 +2,7 @@
 @import "/src/ui/styles/style_colors.module.scss";
 
 .container {
-    padding: $padding_desktop;
+    padding: 0 $padding_desktop;
     display: flex;
     flex-direction: column;
 
@@ -92,12 +92,12 @@
     margin-right: 150px;
 
     > h4 {
-        font-size: 36px;
-        font-weight: 700;
+        font-size: 20px;
+        font-weight: 500;
         margin-bottom: 30px;
 
         @media (max-width: 650px) {
-            font-size: 24px;
+            font-size: 20px;
         }
     }
 
@@ -133,11 +133,17 @@
 .block_card {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-top: -100px;
     grid-gap: 16px;
     height: fit-content;
 
+    @media (max-width: 1580px) {
+        margin-top: 0;
+    }
+
     @media (max-width: 650px) {
         grid-gap: 6px;
+        margin-top: 0;
     }
 }
 
@@ -192,7 +198,7 @@
     padding: 20px;
     width: 100%;
     text-align: center;
-    font-size: 28px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
 

@@ -59,7 +59,7 @@ export function getLanguageName(
     const valueMap: { [key in Language]: string } = {
         [Language.ENG]: "🇺🇸 English",
         [Language.RU]: "🇷🇺 Русский",
-        [Language.UA]: "🇺🇦 Український",
+        [Language.UA]: "🇺🇦 Українська",
         [Language.DE]: "🇩🇪 Deutsch"
     };
     return valueMap[enumValue];
@@ -69,10 +69,10 @@ export function getLanguageNameShort(
     enumValue: Language
 ): string {
     const valueMap: { [key in Language]: string } = {
-        [Language.ENG]: "En",
-        [Language.RU]: "Ру",
-        [Language.UA]: "Ук",
-        [Language.DE]: "De"
+        [Language.ENG]: "EN",
+        [Language.RU]: "РУ",
+        [Language.UA]: "УК",
+        [Language.DE]: "DE"
     };
     return valueMap[enumValue];
 }

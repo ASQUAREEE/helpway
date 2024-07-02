@@ -69,11 +69,11 @@ export default function Header() {
                     link: "1"
                 },
                 {
-                    name: translations.header_menu.projects.submenu.continue,
+                    name: translations.header_menu.projects.submenu.current,
                     link: "2"
                 },
                 {
-                    name: "Продовжується",
+                    name: translations.header_menu.projects.submenu.regular,
                     link: "3"
                 }
             ]
