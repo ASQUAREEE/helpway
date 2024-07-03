@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Edit, Trash } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogClose } from '@/components/ui/dialog';
 import { Button as ShadcnButton } from '@/components/ui/button';
@@ -47,8 +47,32 @@ export default function ProjectItem({ imageUrl, name_ua, name_eng, name_ru, name
     const [editData, setEditData] = useState({ name_ua: name_ua, name_eng: name_eng, name_ru: name_ru, name_de: name_de, description_ua: description_ua, description_eng: description_eng, description_ru: description_ru, description_de: description_de, imageUrl: imageUrl, projectLink: projectLink, type: type });
     const { mutateAsync: deleteProject } = trpc.project.deleteProject.useMutation();
     const { mutateAsync: editProject } = trpc.project.editProjectById.useMutation();
+    const [languageCode, setLanguageCode] = useState("ua");
     const { translations } = useContext(LanguageContext)!;
     const { toast } = useToast();
+
+    const languageContext = useContext(LanguageContext);
+    const language = languageContext?.language;
+
+    useEffect(() => {
+        switch (language) {
+            case 0:
+                setLanguageCode("ua");
+                break;
+            case 1:
+                setLanguageCode("eng");
+                break;
+            case 2:
+                setLanguageCode("ru");
+                break;
+            case 3:
+                setLanguageCode("de");
+                break;
+            default:
+                setLanguageCode("eng");
+                break;
+        }
+    }, [language])
 
     const handleDelete = async() => {
         console.log(imageUrl)
@@ -135,10 +159,10 @@ export default function ProjectItem({ imageUrl, name_ua, name_eng, name_ru, name
               </>
             )}
             <Image width={300} height={300} src={imageUrl} alt={"image"} className={style.image} />
-            <h2 className={style.title}>{name_ua}</h2>
+            <h2 className={style.title}> {editData[`name_${languageCode}` as keyof typeof editData]}</h2>
             <p className={`text-sm mb-8 ${!isExpanded ? 'line-clamp-2' : ''}`}>
-                {description_ua}
-                {description_ua.length > 100 && (
+            {editData[`description_${languageCode}` as keyof typeof editData]}
+                {editData[`description_${languageCode}` as keyof typeof editData].length > 100 && (
                     <span onClick={() => setIsExpanded(!isExpanded)} className="text-blue-500 cursor-pointer ml-2 absolute bottom-16 right-0">
                         {isExpanded ? 'Show less' : 'Read more'}
                     </span>
