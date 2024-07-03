@@ -46,14 +46,19 @@
     }
 
     @media (max-width: 650px) {
+        flex-direction: column; /* Stack buttons vertically */
         margin-bottom: 30px;
     }
 }
 
 .buttons_type {
     margin-right: 16px;
-}
 
+    @media (max-width: 650px) {
+        margin-right: 0;
+        margin-bottom: 16px; /* Add space between buttons */
+    }
+}
 
 .grid_container {
     padding-left: $padding_desktop;
