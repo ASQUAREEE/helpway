@@ -161,12 +161,9 @@ export default function ProjectItem({ imageUrl, name_ua, name_eng, name_ru, name
             <Image width={300} height={300} src={imageUrl} alt={"image"} className={style.image} />
             <h2 className={style.title}> {editData[`name_${languageCode}` as keyof typeof editData]}</h2>
             <p className={`text-sm mb-8 ${!isExpanded ? 'line-clamp-2' : ''}`}>
-            {editData[`description_${languageCode}` as keyof typeof editData]}
-                {editData[`description_${languageCode}` as keyof typeof editData].length > 100 && (
-                    <span onClick={() => setIsExpanded(!isExpanded)} className="text-blue-500 cursor-pointer ml-2 absolute bottom-16 right-0">
-                        {isExpanded ? 'Show less' : 'Read more'}
-                    </span>
-                )}
+            {editData[`description_${languageCode}` as keyof typeof editData].length > 100 
+                ? `${editData[`description_${languageCode}` as keyof typeof editData].substring(0, 100)}...` 
+                : editData[`description_${languageCode}` as keyof typeof editData]}
             </p>
             <Link href={{ pathname: '/project', query: { id } }}>
                 <Button customStyle={style.button} type={"outline"} text={translations.projects.detail} onClick={() => {
