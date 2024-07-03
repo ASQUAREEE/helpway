@@ -16,16 +16,25 @@ model User {
   email String  @unique
   role String @default("user")
   projects Project[]
-  imageGallery ImageGallery[]
 }
 
 model Project {
   id    String     @id @default(cuid())
   userId String
-  name String
-  description String?
+  name_ua String?
+  name_eng String?
+  name_ru String?
+  name_de String?
+  
+  description_ua String?  @db.VarChar(8000)
+  description_eng String? @db.VarChar(8000)
+  description_ru String? @db.VarChar(8000)
+  description_de String? @db.VarChar(8000)
+
   imageUrl String?
   projectLink String?
+  type String? @default("implemented")
+  imageGallery ImageGallery[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   user User @relation(fields: [userId], references: [id]) 
@@ -34,7 +43,7 @@ model Project {
 model ImageGallery {
   id    String     @id @default(cuid())
   imageUrl String
-  userId String
-  user User @relation(fields: [userId], references: [id])
+  projectId String
+  project Project @relation(fields: [projectId], references: [id])
 }
 

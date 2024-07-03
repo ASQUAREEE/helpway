@@ -6,21 +6,29 @@ import Button from "@/ui/components/button/Button";
 import { Button as ShadcnButton } from "@/components/ui/button";
 import { mainPageIds } from "@/utils/Const";
 import { trpc } from '@/server/client';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogClose } from '@/components/ui/dialog';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { removeVercelBlob, uploadToVercelBlob } from "@/lib/vercelBlob";
 import { useToast } from '@/components/ui/use-toast';
 import { Trash } from 'lucide-react';
+import { LanguageContext } from '@/utils/language/LanguageContext';
+
+type ProjectWithGallery = {
+    id: string;
+    imageGallery: { id: string; imageUrl: string; projectId: string; }[];
+}
 
 
-export default function GalleryBlock({ isHeader = false, userId }: { isHeader?: boolean, userId: string | undefined }) {
+
+export default function GalleryBlock({ isHeader = false, userId, projectWithGallery }: { isHeader?: boolean, userId: string | undefined, projectWithGallery?: ProjectWithGallery | null }) {
     const userData = trpc.user.getUser.useMutation();
-    const [images, setImages] = useState<{ userId: string; id: string; imageUrl: string; }[]>([]);
+    const [images, setImages] = useState<{ id: string; imageUrl: string; projectId: string; }[]>([]);
     const [role, setRole] = useState<string | undefined>(undefined);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [imageUrl, setImageUrl] = useState<string | null>(null);
+    const [projectId, setProjectId] = useState<string | null>(projectWithGallery?.id ?? null);
     const {data: galeryFromApi, isLoading} = trpc.project.getGallery.useQuery();
     const imageSave = trpc.project.createGallery.useMutation()
     const { mutateAsync: deleteImage } = trpc.project.deleteGallery.useMutation();
@@ -28,11 +36,20 @@ export default function GalleryBlock({ isHeader = false, userId }: { isHeader?: 
     const [deleteImageId, setDeleteImageId] = useState<string | null>(null);
     const [deleteImageUrl, setDeleteImageUrl] = useState<string | null>(null);
     const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
+    const {data: projectWithGalleryFromApi, isLoading: isProjectWithGalleryLoading} = trpc.project.getProjectWithGallery.useQuery();
+
+    const {translations} = useContext(LanguageContext)!
+
     const { toast } = useToast()
 
-    useEffect(() => {
-        setImages(galeryFromApi ?? []);
-    }, [galeryFromApi]);
+  useEffect(() => {
+    if (projectWithGallery) {
+        setImages(projectWithGallery.imageGallery);
+        setProjectId(projectWithGallery.id);
+    }
+  }, [projectWithGallery]);
+
+ 
 
     const handleOpenModal = () => {
         setIsModalOpen(true);
@@ -42,7 +59,7 @@ export default function GalleryBlock({ isHeader = false, userId }: { isHeader?: 
         setIsModalOpen(false);
     };
 
-    const handleAddImage = (image: { userId: string; id: string; imageUrl: string; }) => {
+    const handleAddImage = (image: { projectId: string; id: string; imageUrl: string; }) => {
         imageSave.mutateAsync(image).then(() => {
             setImages([...images, image]);
             toast({
@@ -80,7 +97,7 @@ export default function GalleryBlock({ isHeader = false, userId }: { isHeader?: 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         if (imageUrl) {
-            handleAddImage({ userId: userId ?? '', id: new Date().toISOString(), imageUrl });
+            handleAddImage({ projectId: projectId ?? '', id: new Date().toISOString(), imageUrl });
         }
         setSubmitButtonDisabled(prev => !prev);
         setImageUrl(null);
@@ -89,7 +106,6 @@ export default function GalleryBlock({ isHeader = false, userId }: { isHeader?: 
 
     const handleDelete = async() => {
         if (deleteImageId && deleteImageUrl) {
-            console.log(deleteImageUrl)
             await removeVercelBlob(deleteImageUrl, (blob) => {
                 if (blob === null) {
                     deleteImage({ id: deleteImageId }).then(() => {
@@ -131,19 +147,19 @@ export default function GalleryBlock({ isHeader = false, userId }: { isHeader?: 
         }
     }, [userId]);
 
-    console.log(images);
 
     return (
         <div>
             <Image.PreviewGroup preview={{ movable: false }}>
                 <div className={style.container} id={mainPageIds.gallery}>
-                    <h3>Галерея</h3>
+                    <h3> {translations.header_menu.gallery} </h3>
                     <div className={style.content}>
-                        <div className={style.folders}>
-                            <Button customStyle={style.button} text={'Test folder'} onClick={() => { }} />
-                            <Button customStyle={style.button} text={'Test folder'} type={"outline"} onClick={() => { }} />
-                            <Button customStyle={style.button} text={'Test folder'} type={"outline"} onClick={() => { }} />
-                        </div>
+                        {/* <div className={style.folders}>
+                            {projectWithGalleryFromApi?.map((item) => (
+                                <Button key={item.id} customStyle={style.button} text={item.name} type={projectId === item.id ? "primary" : "outline"} onClick={() => { setImages(item.imageGallery); setProjectId(item.id); }} />
+                            ))}
+                        </div> */}
+
                         <div className={style.images}>
                             {role && role === "admin" && (
                                 <ShadcnButton className="h-16 w-16 mt-8 ml-16" onClick={handleOpenModal}>
@@ -164,9 +180,9 @@ export default function GalleryBlock({ isHeader = false, userId }: { isHeader?: 
                                             <Trash className="w-4 h-4" />
                                         </button>
                                     )}
-                                    <Image
+                                     <Image
                                         preview={{ mask: (<div />), maskClassName: style.image }}
-                                        className={style.image}
+                                        className={`${style.image} w-48 h-48`}
                                         src={image.imageUrl}
                                     />
                                 </div>

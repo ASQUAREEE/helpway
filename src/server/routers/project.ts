@@ -10,19 +10,66 @@ export const projectRouter = router({
     getProject: procedure.query(async () => {
         return await prisma.project.findMany();
     }),
+    
+    getProjectWithGallery: procedure.query(async () => {
+        return await prisma.project.findMany({
+            include: {
+                imageGallery: true
+            }
+        });
+    }),
+
+    editProjectById: procedure.input(z.object({
+        id: z.string(),
+        name_ua: z.string().optional(),
+        name_eng: z.string().optional(),
+        name_ru: z.string().optional(),
+        name_de: z.string().optional(),
+        description_ua: z.string().optional(),
+        description_eng: z.string().optional(),
+        description_ru: z.string().optional(),
+        description_de: z.string().optional(),
+        imageUrl: z.string().optional(),
+        projectLink: z.string().optional(),
+        type: z.string().optional()
+    })).mutation(async ({ ctx, input }) => {
+        const { id, ...data } = input;
+        return await prisma.project.update({
+            where: { id },
+            data
+        });
+    }),
+
+    getProjectWithGalleryById: procedure.input(z.object({ id: z.string() })).query(async ({ ctx, input: { id } }) => {
+        return await prisma.project.findUnique({
+            where: {
+                id,
+            },
+            include: {
+                imageGallery: true
+            }
+        });
+    }),
 
     createProject: procedure
-    .input(z.object({ userId: z.string(), name: z.string(), description: z.string(), imageUrl: z.string(), projectLink: z.string()}))
-      .mutation(async ({ ctx, input: {userId,name,description,imageUrl,projectLink} }) => {
+    .input(z.object({
+        userId: z.string(),
+        name_ua: z.string().optional(),
+        name_eng: z.string().optional(),
+        name_ru: z.string().optional(),
+        name_de: z.string().optional(),
+        description_ua: z.string().optional(),
+        description_eng: z.string().optional(),
+        description_ru: z.string().optional(),
+        description_de: z.string().optional(),
+        imageUrl: z.string(),
+        projectLink: z.string(),
+        type: z.string()
+    }))
+      .mutation(async ({ ctx, input }) => {
         return (
           await prisma.project.create({
-          data: {
-            name,
-            description,
-            imageUrl,
-            projectLink,
-            userId,
-          },
+          data: input
         })
       )
       
@@ -40,11 +87,11 @@ export const projectRouter = router({
         return await prisma.imageGallery.findMany();
     }),
 
-      createGallery: procedure.input(z.object({ userId: z.string(), imageUrl: z.string() })).mutation(async ({ ctx, input: { userId, imageUrl } }) => {
+      createGallery: procedure.input(z.object({ projectId: z.string(), imageUrl: z.string() })).mutation(async ({ ctx, input: { projectId, imageUrl } }) => {
         return await prisma.imageGallery.create({
           data: {
             imageUrl,
-            userId,
+            projectId,
           },
         });
       }),
