@@ -41,7 +41,7 @@ const Home: NextPage = () => {
                 <HowDoWorkBlock/>
                 <ProjectsBlock userId={user?.id} projectType={projectType} setProjectType={setProjectType} />
                 <PayBlock/>
-                <GalleryBlock userId={user?.id} isHeader/>
+                {/* <GalleryBlock userId={user?.id} isHeader/> */}
                 <PartnersBlock/>
                 <Footer/>
             </div>
