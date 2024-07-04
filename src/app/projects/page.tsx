@@ -8,13 +8,16 @@ import Button from "@/ui/components/button/Button";
 import GalleryBlock from "@/ui/blocks/gallery/GalleryBlock";
 import Footer_projects from "@/ui/components/footer_projects/footer_projects";
 import { useClerk } from "@clerk/nextjs";
+import Footer from "@/ui/components/footer/Footer";
+import { useState } from "react";
 
 export default function Page() {
     const { user } = useClerk();
     const userId = user?.id;
+    const [projectType, setProjectType] = useState<string>("ongoing");
     return (
         <>
-            <Header />
+            <Header selectedType={projectType} setSelectedType={setProjectType} />
             <div className={styles.container}>
                 <div className={styles.head}>
                     <div className={styles.img_main}>
@@ -66,7 +69,8 @@ export default function Page() {
                 <GalleryBlock userId={userId}/>
                 </div>
             </div>
-                <Footer_projects />
+                {/* <Footer_projects /> */}
+                <Footer />
         </>
 
 

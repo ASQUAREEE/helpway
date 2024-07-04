@@ -12,13 +12,15 @@ import GalleryBlock from "@/ui/blocks/gallery/GalleryBlock";
 import { trpc } from '@/server/client';
 import { NextPage } from 'next';
 import { useClerk } from '@clerk/nextjs';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import HistoryBlock from '@/ui/blocks/history/HistoryBlock';
 import PayBlock from '@/ui/blocks/pay/PayBlock';
 
 const Home: NextPage = () => {
 
   const { user } = useClerk();
+
+  const [projectType, setProjectType] = useState<string>("ongoing");
 
   const createUserIfNotExists = trpc.user.createUserIfNotExists.useMutation();
 
@@ -32,12 +34,12 @@ const Home: NextPage = () => {
     return (
         <main className={styles.main}>
             <div className={styles.container}>
-                <Header/>
+                <Header setSelectedType={setProjectType} selectedType={projectType} />
                 <MainBlock/>
                 <HistoryBlock/>
                 <MissionBlock/>
                 <HowDoWorkBlock/>
-                <ProjectsBlock userId={user?.id}/>
+                <ProjectsBlock userId={user?.id} projectType={projectType} setProjectType={setProjectType} />
                 <PayBlock/>
                 <GalleryBlock userId={user?.id} isHeader/>
                 <PartnersBlock/>
