@@ -91,7 +91,7 @@ export default function Header({setSelectedType, selectedType}: {setSelectedType
     return (
         <header className={style.header}>
             {
-                !isMobile ? HeaderDesktop(menuItems, isShortEmail, isShortLanguage, setSelectedType, selectedType) : HeaderMobile(menuItems, onClose, showDrawer, open)
+                !isMobile ? HeaderDesktop(menuItems, isShortEmail, isShortLanguage, setSelectedType, selectedType) : HeaderMobile(menuItems, onClose, showDrawer, open,setSelectedType, selectedType )
             }
             <div className={style.divider}/>
         </header>
