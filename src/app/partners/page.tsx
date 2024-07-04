@@ -5,7 +5,7 @@ import styles from './page.module.scss'
 import Footer from '@/ui/components/footer/Footer';
 import Button from "@/ui/components/button/Button";
 import {Checkbox, CheckboxProps} from 'antd';
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import { LanguageContext } from "@/utils/language/LanguageContext";
 import { Select } from 'antd';
 
@@ -17,6 +17,8 @@ export default function Page() {
         console.log(`checked = ${e.target.checked}`);
     };
 
+    const [projectType, setProjectType] = useState<string>("ongoing");
+
     const offerOptions = [
         { value:  translations.partners_page.offer_option1 , label: <span>{translations.partners_page.offer_option1}</span> },
         { value:  translations.partners_page.offer_option2 , label: <span>{translations.partners_page.offer_option2}</span> },
@@ -26,7 +28,7 @@ export default function Page() {
     return (
         <main className={styles.main}>
             <div className={styles.container}>
-                <Header/>
+                <Header selectedType={projectType} setSelectedType={setProjectType} />
                 <div className={styles.partners_container}>
                     <div className={styles.header}>
                         <h1>{translations.header_menu.partner}</h1>
