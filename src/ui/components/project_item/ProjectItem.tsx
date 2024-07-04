@@ -158,8 +158,12 @@ export default function ProjectItem({ imageUrl, name_ua, name_eng, name_ru, name
                   </button>
               </>
             )}
+            <Link href={{ pathname: '/project', query: { id } }}>
             <Image width={300} height={300} src={imageUrl} alt={"image"} className={style.image} />
+            </Link>
+            <Link href={{ pathname: '/project', query: { id } }}>
             <h2 className={style.title}> {editData[`name_${languageCode}` as keyof typeof editData]}</h2>
+            </Link>
             <p className={`text-sm mb-8 ${!isExpanded ? 'line-clamp-2' : ''}`}>
             {editData[`description_${languageCode}` as keyof typeof editData].length > 100 
                 ? `${editData[`description_${languageCode}` as keyof typeof editData].substring(0, 100)}...` 
