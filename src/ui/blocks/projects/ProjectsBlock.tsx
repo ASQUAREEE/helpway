@@ -48,12 +48,12 @@ type Project = {
     updatedAt: string;
 }
 
-export default function ProjectsBlock({userId}: {userId: string | undefined}) {
+export default function ProjectsBlock({userId, projectType, setProjectType}: {userId: string | undefined, projectType: string, setProjectType: React.Dispatch<React.SetStateAction<string>>}) {
 
    const [data, setData] = useState<User | null>(null);
    const [isModalOpen, setIsModalOpen] = useState(false);
    const [imageUrl, setImageUrl] = useState<string | null>(null);
-   const [projectType, setProjectType] = useState<string>("ongoing");
+//    const [projectType, setProjectType] = useState<string>("ongoing");
    const [selectedType, setSelectedType] = useState<string>("ongoing");
    const projectSave = trpc.project.createProject.useMutation()
    const userData = trpc.user.getUser.useMutation()
@@ -173,6 +173,8 @@ export default function ProjectsBlock({userId}: {userId: string | undefined}) {
 
 
     return (
+        
+        <section id={"projects"}>
         <div className={style.container} id={mainPageIds.project.ready}>
         <h3>
             {translations.projects.title}
@@ -351,6 +353,7 @@ export default function ProjectsBlock({userId}: {userId: string | undefined}) {
                 </DialogContent>
             </Dialog>
         </div>
+        </section>
     )
 }
 

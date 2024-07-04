@@ -10,6 +10,7 @@ import { useSearchParams } from "next/navigation";
 import { trpc } from "@/server/client";
 import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "@/utils/language/LanguageContext";
+import Footer from "@/ui/components/footer/Footer";
 
 const Page = () => {
     const { user } = useClerk();
@@ -20,6 +21,7 @@ const Page = () => {
     const { data: projectWithGallery, isLoading } = projectId ? trpc.project.getProjectWithGalleryById.useQuery({ id: projectId as string }) : { data: null, isLoading: false };
     const languageContext = useContext(LanguageContext);
     const language = languageContext?.language;
+    const [projectType, setProjectType] = useState<string>("ongoing");
 
     useEffect(() => {
         switch (language) {
@@ -51,7 +53,7 @@ const Page = () => {
 
     return (
         <>
-        <Header />
+        <Header selectedType={projectType} setSelectedType={setProjectType} />
         <div className="container mx-auto p-4 md:p-8 lg:p-12">
             <div className="flex flex-col md:flex-row items-center md:items-start md:justify-between mt-16">
                 <div className="mb-4 md:mb-0 md:mr-8 w-full md:w-1/2 lg:w-1/3">
@@ -71,7 +73,8 @@ const Page = () => {
                 <GalleryBlock userId={userId} projectWithGallery={projectWithGallery} />
             </div>
         </div>
-        <Footer_projects />
+        {/* <Footer_projects /> */}
+        <Footer />
     </>
     );
 }

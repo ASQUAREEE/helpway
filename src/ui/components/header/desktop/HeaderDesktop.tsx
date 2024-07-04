@@ -17,13 +17,19 @@ import { SignInButton, SignOutButton, useClerk } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-function MenuItem({name, link, subItems = []}: MenuItem) {
+function MenuItem({name, link, subItems = [], setSelectedType, selectedType}: MenuItem & {setSelectedType: React.Dispatch<React.SetStateAction<string>>, selectedType: string}) {
+
+    const changeSelectedType = (type: string) => {  
+        setSelectedType(type.charAt(0).toLowerCase() + type.slice(1))
+    }
     const content = subItems?.length > 0 ?
         (
             <div>
                 {
                     subItems.map((item) => (
-                        <a href={`/#${item.link}`} key={item.link} className={style.submenu_item}>
+                        <a href={`/#${item.link}`} key={item.name} onClick={() => {
+                           changeSelectedType(item.name)
+                        }} className={style.submenu_item}>
                             {item.name}
                         </a>
                     ))
@@ -100,7 +106,7 @@ function MailButton({shortEmail}: MailButtonProps) {
 }
 
 
-export default function HeaderDesktop(menuItems: MenuItem[], shortEmail: boolean, shortLanguage: boolean) {
+export default function HeaderDesktop(menuItems: MenuItem[], shortEmail: boolean, shortLanguage: boolean, setSelectedType: React.Dispatch<React.SetStateAction<string>>, selectedType: string) {
 
     const {translations} = useContext(LanguageContext)!
     const router = useRouter()
@@ -120,7 +126,7 @@ export default function HeaderDesktop(menuItems: MenuItem[], shortEmail: boolean
                     }}/>
                     {
                         menuItems.map((item) => (
-                            <MenuItem link={item.link} name={item.name} subItems={item.subItems} key={item.link}/>
+                            <MenuItem link={item.link} name={item.name} subItems={item.subItems} key={item.link} setSelectedType={setSelectedType} selectedType={selectedType} />
                         ))
                     }
                 </div>
