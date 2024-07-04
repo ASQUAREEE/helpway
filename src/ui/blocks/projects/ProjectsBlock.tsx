@@ -202,8 +202,12 @@ export default function ProjectsBlock({userId, projectType, setProjectType}: {us
 
         </div>
         <div className={style.grid_container}>
-                {
-                    Projects(data?.role, handleOpenModal, projectByType, setProjects) 
+        {
+                    projectByType.length > 0 ? (
+                        Projects(data?.role, handleOpenModal, projectByType, setProjects)
+                    ) : (
+                        <p>No projects here</p>
+                    )
                 }
             </div>
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
