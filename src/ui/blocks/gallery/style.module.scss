@@ -55,7 +55,9 @@
 
     @media (max-width: 650px) {
         padding: 16px;
-        grid-gap: 6px;
+        // grid-gap: 6px;
+        grid-template-columns: 1fr;
+        margin-left: 35px;
     }
 
 }
