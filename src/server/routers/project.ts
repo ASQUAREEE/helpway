@@ -40,10 +40,10 @@ export const projectRouter = router({
         });
     }),
 
-    getProjectWithGalleryById: procedure.input(z.object({ id: z.string() })).query(async ({ ctx, input: { id } }) => {
+    getProjectWithGalleryById: procedure.input(z.object({ name_eng: z.string() })).query(async ({ ctx, input: { name_eng } }) => {
         return await prisma.project.findUnique({
             where: {
-                id,
+                name_eng: name_eng,
             },
             include: {
                 imageGallery: true

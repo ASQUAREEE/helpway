@@ -22,7 +22,7 @@ model Project {
   id    String     @id @default(cuid())
   userId String
   name_ua String?
-  name_eng String?
+  name_eng String? @unique
   name_ru String?
   name_de String?
   

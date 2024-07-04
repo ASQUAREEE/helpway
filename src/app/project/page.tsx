@@ -11,14 +11,16 @@ import { trpc } from "@/server/client";
 import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "@/utils/language/LanguageContext";
 import Footer from "@/ui/components/footer/Footer";
+import { useRouter } from "next/router";
 
 const Page = () => {
     const { user } = useClerk();
     const userId = user?.id;
     const searchParams = useSearchParams();
-    const projectId = searchParams.get('id');
+    const name_eng = searchParams.get('name_eng');
+    
     const [languageCode, setLanguageCode] = useState("ua");
-    const { data: projectWithGallery, isLoading } = projectId ? trpc.project.getProjectWithGalleryById.useQuery({ id: projectId as string }) : { data: null, isLoading: false };
+    const { data: projectWithGallery, isLoading } = name_eng ? trpc.project.getProjectWithGalleryById.useQuery({ name_eng: name_eng as string }) : { data: null, isLoading: false };
     const languageContext = useContext(LanguageContext);
     const language = languageContext?.language;
     const [projectType, setProjectType] = useState<string>("ongoing");
@@ -70,7 +72,7 @@ const Page = () => {
                 </div>
             </div>
             <div className="mt-12">
-                <GalleryBlock userId={userId} projectWithGallery={projectWithGallery} />
+                <GalleryBlock userId={userId} projectWithGallery={{ ...projectWithGallery, imageGallery: (projectWithGallery as any).imageGallery || [] }} />
             </div>
         </div>
         {/* <Footer_projects /> */}

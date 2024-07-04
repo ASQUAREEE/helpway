@@ -135,8 +135,6 @@ export default function HeaderDesktop(menuItems: MenuItem[], shortEmail: boolean
                 <MailButton shortEmail={shortEmail}/>
                 <LanguageSwitcher type={languageButtonType} customClass={style.language}/>
                 <Button1 text={translations.header_actions.donate} onClick={onDonateClick}/>
-                {!user && <Link href="/auth/sign-in"><Button className="ml-5 mt-2 rounded-3xl">Sign In</Button></Link>}
-                {user && <SignOutButton><Button className="ml-5 mt-2 rounded-3xl">Sign Out</Button></SignOutButton>}
             </div>
         </div>
     )
