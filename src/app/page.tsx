@@ -8,13 +8,13 @@ import HowDoWorkBlock from "@/ui/blocks/how_do_work/HowDoWorkBlock";
 import MissionBlock from "@/ui/blocks/mission/MissionBlock";
 import ProjectsBlock from "@/ui/blocks/projects/ProjectsBlock";
 import Footer from '@/ui/components/footer/Footer';
-import GalleryBlock from "@/ui/blocks/gallery/GalleryBlock";
 import { trpc } from '@/server/client';
 import { NextPage } from 'next';
 import { useClerk } from '@clerk/nextjs';
 import { useEffect, useState } from 'react';
 import HistoryBlock from '@/ui/blocks/history/HistoryBlock';
 import PayBlock from '@/ui/blocks/pay/PayBlock';
+import GalleryBlock from '@/ui/blocks/homePageGallery/GalleryBlock';
 
 const Home: NextPage = () => {
 
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
                 <HowDoWorkBlock/>
                 <ProjectsBlock userId={user?.id} projectType={projectType} setProjectType={setProjectType} />
                 <PayBlock/>
-                {/* <GalleryBlock userId={user?.id} isHeader/> */}
+                <GalleryBlock userId={user?.id} isHeader/>
                 <PartnersBlock/>
                 <Footer/>
             </div>
