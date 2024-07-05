@@ -19,6 +19,10 @@ export const projectRouter = router({
         });
     }),
 
+    getHomePageGallery: procedure.query(async () => {
+        return await prisma.gallery.findMany();
+    }),
+
     editProjectById: procedure.input(z.object({
         id: z.string(),
         name_ua: z.string().optional(),
@@ -98,6 +102,23 @@ export const projectRouter = router({
 
       deleteGallery: procedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input: { id } }) => {
         return await prisma.imageGallery.delete({
+          where: {
+            id,
+          },
+        });
+      }),
+
+      createHomePageGallery: procedure.input(z.object({ userId: z.string(), imageUrl: z.string() })).mutation(async ({ ctx, input: { userId, imageUrl } }) => {
+        return await prisma.gallery.create({
+          data: {
+            imageUrl,
+            userId,
+          },
+        });
+      }),
+
+      deleteHomePageGallery: procedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input: { id } }) => {
+        return await prisma.gallery.delete({
           where: {
             id,
           },

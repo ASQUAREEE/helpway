@@ -16,6 +16,7 @@ model User {
   email String  @unique
   role String @default("user")
   projects Project[]
+  galleries Gallery[]
 }
 
 model Project {
@@ -47,3 +48,9 @@ model ImageGallery {
   project Project @relation(fields: [projectId], references: [id])
 }
 
+model Gallery {
+  id    String     @id @default(cuid())
+  imageUrl String
+  userId String
+  user User @relation(fields: [userId], references: [id])
+}
