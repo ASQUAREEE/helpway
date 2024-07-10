@@ -14,13 +14,6 @@ import {useContext} from "react";
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '@/components/ui/select';
 
 type Project = {
     id: string;
@@ -33,18 +26,17 @@ type Project = {
     description_ru: string | null;
     description_de: string | null;
     imageUrl: string | null;
-    type: string | null;
     projectLink: string | null;
     createdAt: string;
     updatedAt: string;
 }
 
-export default function ProjectItem({ imageUrl, name_ua, name_eng, name_ru, name_de, description_ua, description_eng, description_ru, description_de, projectLink, id, role, setProjects, type }: { imageUrl: string, name_ua: string, name_eng: string, name_ru: string, name_de: string, description_ua: string, description_eng: string, description_ru: string, description_de: string, projectLink: string, id: string, role: string | undefined, setProjects: React.Dispatch<React.SetStateAction<Project[]>>, type: string }) {
+export default function ProjectItem({ imageUrl, name_ua, name_eng, name_ru, name_de, description_ua, description_eng, description_ru, description_de, projectLink, id, role, setProjects }: { imageUrl: string, name_ua: string, name_eng: string, name_ru: string, name_de: string, description_ua: string, description_eng: string, description_ru: string, description_de: string, projectLink: string, id: string, role: string | undefined, setProjects: React.Dispatch<React.SetStateAction<Project[]>> }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
-    const [editData, setEditData] = useState({ name_ua: name_ua, name_eng: name_eng, name_ru: name_ru, name_de: name_de, description_ua: description_ua, description_eng: description_eng, description_ru: description_ru, description_de: description_de, imageUrl: imageUrl, projectLink: projectLink, type: type });
+    const [editData, setEditData] = useState({ name_ua: name_ua, name_eng: name_eng, name_ru: name_ru, name_de: name_de, description_ua: description_ua, description_eng: description_eng, description_ru: description_ru, description_de: description_de, imageUrl: imageUrl, projectLink: projectLink});
     const { mutateAsync: deleteProject } = trpc.project.deleteProject.useMutation();
     const { mutateAsync: editProject } = trpc.project.editProjectById.useMutation();
     const [languageCode, setLanguageCode] = useState("ua");
@@ -147,33 +139,33 @@ export default function ProjectItem({ imageUrl, name_ua, name_eng, name_ru, name
     };
 
     return (
-        <div className={`${style.item} relative`}>
-            {role === 'admin' && (
-                  <>
-                  <button className="absolute top-2 left-2 bg-white p-1 rounded-full text-blue-500 hover:text-blue-700" onClick={handleEdit}>
-                      <Edit className="w-6 h-6" />
-                  </button>
-                  <button className="absolute top-2 right-2 bg-white p-1 rounded-full text-red-500 hover:text-red-700" onClick={() => setIsModalOpen(true)}>
-                      <Trash className="w-6 h-6" />
-                  </button>
-              </>
-            )}
-            <Link href={{ pathname: '/project', query: { name_eng: editData.name_eng } }}>
-            <Image width={300} height={300} src={imageUrl} alt={"image"} className={style.image} />
-            </Link>
-            <Link href={{ pathname: '/project', query: { name_eng: editData.name_eng } }}>
-            <h2 className={style.title}> {editData[`name_${languageCode}` as keyof typeof editData]}</h2>
-            </Link>
-            <p className={`text-sm mb-8 ${!isExpanded ? 'line-clamp-2' : ''}`}>
-            {editData[`description_${languageCode}` as keyof typeof editData].length > 100 
-                ? `${editData[`description_${languageCode}` as keyof typeof editData].substring(0, 100)}...` 
-                : editData[`description_${languageCode}` as keyof typeof editData]}
-            </p>
-            <Link href={{ pathname: '/project', query: { name_eng: editData.name_eng } }}>
-                <Button customStyle={style.button} type={"outline"} text={translations.projects.detail} onClick={() => {
-            }}/>
-            </Link>
-
+        <div className="flex flex-wrap justify-center gap-4">
+            <div className={`${style.item} relative flex flex-col justify-between h-full`}>
+                {role === 'admin' && (
+                    <>
+                        <button className="absolute top-2 left-2 bg-white p-1 rounded-full text-blue-500 hover:text-blue-700" onClick={handleEdit}>
+                            <Edit className="w-6 h-6" />
+                        </button>
+                        <button className="absolute top-2 right-2 bg-white p-1 rounded-full text-red-500 hover:text-red-700" onClick={() => setIsModalOpen(true)}>
+                            <Trash className="w-6 h-6" />
+                        </button>
+                    </>
+                )}
+                <Link href={{ pathname: '/project', query: { name_eng: editData.name_eng } }}>
+                    <Image width={300} height={300} src={imageUrl} alt={"image"} className={style.image} />
+                </Link>
+                <Link href={{ pathname: '/project', query: { name_eng: editData.name_eng } }}>
+                    <h2 className={style.title}> {editData[`name_${languageCode}` as keyof typeof editData]}</h2>
+                </Link>
+                <p className={`text-sm mb-8 ${!isExpanded ? 'line-clamp-2' : ''}`}>
+                    {editData[`description_${languageCode}` as keyof typeof editData].length > 100 
+                        ? `${editData[`description_${languageCode}` as keyof typeof editData].substring(0, 100)}...` 
+                        : editData[`description_${languageCode}` as keyof typeof editData]}
+                </p>
+                <Link href={{ pathname: '/project', query: { name_eng: editData.name_eng } }}>
+                    <Button customStyle={style.button} type={"outline"} text={translations.projects.detail} onClick={() => {}}/>
+                </Link>
+            </div>
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
                 <DialogContent>
                     <DialogHeader>
@@ -328,24 +320,6 @@ export default function ProjectItem({ imageUrl, name_ua, name_eng, name_ru, name
                                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                 onChange={(e) => handleImageChange(e)}
                             />
-                        </div>
-                        <div>
-                            <Label htmlFor="type" className="block text-sm font-medium text-gray-700">
-                                Type
-                            </Label>
-                            <Select
-                                value={editData.type}
-                                onValueChange={(value: string) => setEditData({ ...editData, type: value })}
-                            >
-                               <SelectTrigger>
-                                    <SelectValue placeholder="Select type" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="implemented">Implemented</SelectItem>
-                                    <SelectItem value="ongoing">Ongoing</SelectItem>
-                                    <SelectItem value="regular">Regular</SelectItem>
-                                </SelectContent>
-                            </Select>
                         </div>
                         <DialogFooter>
                             <ShadcnButton type="submit" className="bg-blue-500 text-white">Save</ShadcnButton>

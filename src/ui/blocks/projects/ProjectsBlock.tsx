@@ -42,40 +42,28 @@ type Project = {
     description_ru: string | null;
     description_de: string | null;
     imageUrl: string | null;
-    type: string | null;
     projectLink: string | null;
     createdAt: string;
     updatedAt: string;
 }
 
-export default function ProjectsBlock({userId, projectType, setProjectType}: {userId: string | undefined, projectType: string, setProjectType: React.Dispatch<React.SetStateAction<string>>}) {
+export default function ProjectsBlock({userId}: {userId: string | undefined}) {
 
    const [data, setData] = useState<User | null>(null);
    const [isModalOpen, setIsModalOpen] = useState(false);
    const [imageUrl, setImageUrl] = useState<string | null>(null);
-//    const [projectType, setProjectType] = useState<string>("ongoing");
-   const [selectedType, setSelectedType] = useState<string>("ongoing");
    const projectSave = trpc.project.createProject.useMutation()
    const userData = trpc.user.getUser.useMutation()
    const {data: projectsFromApi, isLoading, refetch} = trpc.project.getProject.useQuery()
-   const [projectByType, setProjectByType] = useState<Project[]>([]);
    const [projects, setProjects] = useState<Project[]>([]);
    const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
    const {translations} = useContext(LanguageContext)!
-    const router = useRouter()
+   const router = useRouter()
 
    useEffect(() => {
     setProjects(projectsFromApi ?? []);
-   }, [projectsFromApi]);
+   }, [projectsFromApi])
 
-   useEffect(() => {
-    if (projectsFromApi) {
-        const filteredProjects = projectsFromApi.filter(project => project.type === projectType);
-        setProjectByType(filteredProjects);
-    }
-}, [projectsFromApi, projectType]);
-
-    console.log(projects)
     const handleOpenModal = () => {
         setIsModalOpen(true);
     };
@@ -110,7 +98,6 @@ export default function ProjectsBlock({userId, projectType, setProjectType}: {us
         const description_ru = formData.get('description_ru')?.toString();
         const description_de = formData.get('description_de')?.toString();
         // const type = formData.get('type')?.toString();
-        const type = selectedType; 
 
         projectSave.mutateAsync({
             name_ua: title_ua ?? '',
@@ -124,7 +111,6 @@ export default function ProjectsBlock({userId, projectType, setProjectType}: {us
             imageUrl: imageUrl ?? '',
             projectLink: projectUrl ?? '',
             userId: userId ?? '',
-            type: selectedType ?? "ongoing"
         }).then(() => {
             setProjects([...projects, {
                 name_ua: title_ua ?? '',
@@ -137,10 +123,9 @@ export default function ProjectsBlock({userId, projectType, setProjectType}: {us
                 description_de: description_de ?? '',
                 imageUrl: imageUrl ?? '',
                 projectLink: projectUrl ?? '',
-                type: selectedType ?? "ongoing",
                 id: "",
                 createdAt: "",
-                updatedAt: ""
+                updatedAt: "",
             }]);
         }).then(() => {
             (event.target as HTMLFormElement).reset();
@@ -181,30 +166,17 @@ export default function ProjectsBlock({userId, projectType, setProjectType}: {us
         </h3>
         <div className={style.buttons_type_layout}>
             <Button1
-                text={translations.projects.ready}
-                type={projectType === "implemented" ? "primary" : "primary_dark"}
+                text={translations.projects.title}
+                type="primary"
                 customStyle={style.buttons_type}
-                onClick={() => { setProjectType("implemented");}}
-            />
-            <Button1
-                text={translations.projects.current}
-                type={projectType === "ongoing" ? "primary" : "primary_dark"}
-                customStyle={style.buttons_type}
-                onClick={() => { setProjectType("ongoing");}}
-            />
-
-            <Button1
-                text={translations.projects.regular}
-                type={projectType === "regular" ? "primary" : "primary_dark"}
-                customStyle={style.buttons_type}
-                onClick={() => { setProjectType("regular");}}
+                onClick={() => { }}
             />
 
         </div>
         <div className={style.grid_container}>
         {
-                    projectByType.length > 0 ? (
-                        Projects(data?.role, handleOpenModal, projectByType, setProjects)
+                    projects.length > 0 ? (
+                        Projects(data?.role, handleOpenModal, projects, setProjects)
                     ) : (
                         <p>No projects here</p>
                     )
@@ -335,21 +307,6 @@ export default function ProjectsBlock({userId, projectType, setProjectType}: {us
                                 onChange={(e) => handleImageChange(e)}
                             />
                         </div>
-                        <div>
-                            <Label htmlFor="type" className="block text-sm font-medium text-gray-700">
-                                Type
-                            </Label>
-                            <Select value={selectedType} onValueChange={setSelectedType}>
-                            <SelectTrigger>
-                                <SelectValue placeholder="Select type" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="implemented">Implemented</SelectItem>
-                                <SelectItem value="ongoing">Ongoing</SelectItem>
-                                <SelectItem value="regular">Regular</SelectItem>
-                            </SelectContent>
-                        </Select>
-                        </div>
                         <DialogFooter>
                             <Button type="submit" disabled={submitButtonDisabled}>Submit</Button>
                         </DialogFooter>
@@ -382,7 +339,6 @@ function Projects(role: string | undefined, handleOpenModal: () => void, project
                     description_ru={project.description_ru ?? ''}
                     description_de={project.description_de ?? ''}
                     projectLink={project.projectLink ?? ''}
-                    type={project.type ?? ''}
                     role={role}
                     setProjects={setProjects}
                 />

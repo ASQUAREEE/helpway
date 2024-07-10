@@ -7,11 +7,12 @@ import Menu from "@/../public/svg/menu.svg"
 import {Drawer} from "antd";
 import Logo from "@/../public/svg/logo_black.svg"
 
-function MenuItem({name, link, subItems = [], setSelectedType, selectedType, onClose}: MenuItem & {setSelectedType: React.Dispatch<React.SetStateAction<string>>, selectedType: string, onClose: () => void}) {
-    const changeSelectedType = (type: string) => {  
-        setSelectedType(type.charAt(0).toLowerCase() + type.slice(1))
-        onClose()
-    }
+interface MenuItemProps extends MenuItem {
+  onClose: () => void;
+}
+
+function MenuItem({name, link, subItems = [], onClose}: MenuItemProps) {
+
     if (subItems?.length > 0) {
         return (
             <div className={style.submenu_header}>
@@ -19,7 +20,7 @@ function MenuItem({name, link, subItems = [], setSelectedType, selectedType, onC
                 {
                     subItems.map((item) => (
                         <a href={`/#${item.link}`} key={item.name} className={style.submenu_item} onClick={() => {
-                            changeSelectedType(item.name)
+                            // onClose
                         }}>
                             {item.name}
                         </a>
@@ -29,14 +30,14 @@ function MenuItem({name, link, subItems = [], setSelectedType, selectedType, onC
         )
     } else {
         return (
-            <a href={`/#${link}`} className={style.menu_item}>
+            <a href={`/#projects`} className={style.menu_item} onClick={() => {onClose()}}>
                 {name}
             </a>
         )
     }
 }
 
-export default function HeaderMobile(menuItems: MenuItem[], onClose: () => void, onOpen: () => void, openDrawer: boolean, setSelectedType: React.Dispatch<React.SetStateAction<string>>, selectedType: string) {
+export default function HeaderMobile(menuItems: MenuItem[], onClose: () => void, onOpen: () => void, openDrawer: boolean) {
 
 
     return (
@@ -56,7 +57,7 @@ export default function HeaderMobile(menuItems: MenuItem[], onClose: () => void,
                     </div>
                     {
                         menuItems.map((item) => (
-                            <MenuItem key={item.link} link={item.link} name={item.name} subItems={item.subItems} setSelectedType={setSelectedType} selectedType={selectedType} onClose={onClose}/>
+                            <MenuItem key={item.link} link={item.link} name={item.name} subItems={item.subItems} onClose={onClose}/>
                         ))
                     }
                 </div>

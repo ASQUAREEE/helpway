@@ -14,10 +14,9 @@ import { useState } from "react";
 export default function Page() {
     const { user } = useClerk();
     const userId = user?.id;
-    const [projectType, setProjectType] = useState<string>("ongoing");
     return (
         <>
-            <Header selectedType={projectType} setSelectedType={setProjectType} />
+            <Header />
             <div className={styles.container}>
                 <div className={styles.head}>
                     <div className={styles.img_main}>

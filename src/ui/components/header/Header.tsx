@@ -14,7 +14,7 @@ export interface MenuItem {
     subItems?: MenuItem[]
 }
 
-export default function Header({setSelectedType, selectedType}: {setSelectedType: React.Dispatch<React.SetStateAction<string>>, selectedType: string}) {
+export default function Header() {
 
     const {translations} = useContext(LanguageContext)!
 
@@ -63,20 +63,6 @@ export default function Header({setSelectedType, selectedType}: {setSelectedType
         {
             name: translations.header_menu.projects.name,
             link: "2",
-            subItems: [
-                {
-                    name: translations.header_menu.projects.submenu.ready,
-                    link: "projects",
-                },
-                {
-                    name: translations.header_menu.projects.submenu.current,
-                    link: "projects",
-                },
-                {
-                    name: translations.header_menu.projects.submenu.regular,
-                    link: "projects"
-                }
-            ]
         },
         {
             name: translations.header_menu.partner,
@@ -91,7 +77,7 @@ export default function Header({setSelectedType, selectedType}: {setSelectedType
     return (
         <header className={style.header}>
             {
-                !isMobile ? HeaderDesktop(menuItems, isShortEmail, isShortLanguage, setSelectedType, selectedType) : HeaderMobile(menuItems, onClose, showDrawer, open,setSelectedType, selectedType )
+                !isMobile ? HeaderDesktop(menuItems, isShortEmail, isShortLanguage) : HeaderMobile(menuItems, onClose, showDrawer, open)
             }
             <div className={style.divider}/>
         </header>

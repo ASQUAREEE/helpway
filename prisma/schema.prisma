@@ -34,7 +34,6 @@ model Project {
 
   imageUrl String?
   projectLink String?
-  type String? @default("implemented")
   imageGallery ImageGallery[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
