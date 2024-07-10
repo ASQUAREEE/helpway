@@ -20,8 +20,6 @@ const Home: NextPage = () => {
 
   const { user } = useClerk();
 
-  const [projectType, setProjectType] = useState<string>("ongoing");
-
   const createUserIfNotExists = trpc.user.createUserIfNotExists.useMutation();
 
   useEffect(() => {
@@ -34,12 +32,12 @@ const Home: NextPage = () => {
     return (
         <main className={styles.main}>
             <div className={styles.container}>
-                <Header setSelectedType={setProjectType} selectedType={projectType} />
+                <Header />
                 <MainBlock/>
                 <HistoryBlock/>
                 <MissionBlock/>
                 <HowDoWorkBlock/>
-                <ProjectsBlock userId={user?.id} projectType={projectType} setProjectType={setProjectType} />
+                <ProjectsBlock userId={user?.id} />
                 <PayBlock/>
                 <GalleryBlock userId={user?.id} isHeader/>
                 <PartnersBlock/>

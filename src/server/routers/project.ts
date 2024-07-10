@@ -35,7 +35,6 @@ export const projectRouter = router({
         description_de: z.string().optional(),
         imageUrl: z.string().optional(),
         projectLink: z.string().optional(),
-        type: z.string().optional()
     })).mutation(async ({ ctx, input }) => {
         const { id, ...data } = input;
         return await prisma.project.update({
@@ -68,7 +67,6 @@ export const projectRouter = router({
         description_de: z.string().optional(),
         imageUrl: z.string(),
         projectLink: z.string(),
-        type: z.string()
     }))
       .mutation(async ({ ctx, input }) => {
         return (
