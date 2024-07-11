@@ -52,31 +52,44 @@ const Page = () => {
         return <div>Project not found</div>;
     }
 
+    console.log(languageCode)
+
+    const descriptionKey = `description_${languageCode}` as 'description_ua' | 'description_eng' | 'description_ru' | 'description_de';
+    const description = projectWithGallery[descriptionKey];
+
     return (
         <>
-        <Header />
-        <div className="container mx-auto p-4 md:p-8 lg:p-12">
-            <div className="flex flex-col md:flex-row items-center md:items-start md:justify-between mt-16">
-                <div className="mb-4 md:mb-0 md:mr-8 w-full md:w-1/2 lg:w-1/3">
-                    <Image src={projectWithGallery.imageUrl || "/default-image.png"} alt={"default"} width={330} height={200} className="w-full h-auto rounded-lg shadow-lg" />
-                </div>
-                <div className="text-center md:text-left w-full md:w-1/2 lg:w-2/3">
-                    <div className="max-w-lg lg:max-w-2xl mx-auto md:mx-0">
-                        <h1 className="text-2xl md:text-3xl font-bold text-gray-800">{projectWithGallery[`name_${languageCode}` as 'name_ua' | 'name_eng' | 'name_ru' | 'name_de']}</h1>
-                        <p className="mt-4 text-base md:text-lg text-gray-600">{projectWithGallery[`description_${languageCode}` as 'description_ua' | 'description_eng' | 'description_ru' | 'description_de']}</p>
-                        <div className={styles.btn}>
+            <Header />
+            <div className="container mx-auto p-4 md:p-8 lg:p-12">
+                <div className="flex flex-col md:flex-row items-center md:items-start md:justify-between mt-16">
+                    <div className="mb-4 md:mb-0 md:mr-8 w-full md:w-1/2 lg:w-1/3">
+                        <Image src={projectWithGallery.imageUrl || "/default-image.png"} alt={"default"} width={330} height={200} className="w-full h-auto rounded-lg shadow-lg" />
+                    </div>
+                    <div className="text-center md:text-left w-full md:w-1/2 lg:w-2/3">
+                        <div className="max-w-lg lg:max-w-2xl mx-auto md:mx-0">
+                            <h1 className="text-2xl md:text-3xl font-bold text-gray-800">{projectWithGallery[`name_${languageCode}` as 'name_ua' | 'name_eng' | 'name_ru' | 'name_de']}</h1>
+                            <div className="mt-4 text-base md:text-lg text-gray-600">
+                                {languageCode === 'eng' || languageCode === 'de' ? (
+                                    description?.split('\n').map((paragraph: string, index: number) => (
+                                        <p key={index} className="mb-4">{paragraph}</p>
+                                    ))
+                                ) : (
+                                    <p>{description}</p>
+                                )}
+                            </div>
+                            <div className={styles.btn}>
                                 <Button text="Donate" type="outline" onClick={() => { }} />
                             </div>
+                        </div>
                     </div>
                 </div>
+                <div className="mt-12">
+                    <GalleryBlock userId={userId} projectWithGallery={{ ...projectWithGallery, imageGallery: (projectWithGallery as any).imageGallery || [] }} />
+                </div>
             </div>
-            <div className="mt-12">
-                <GalleryBlock userId={userId} projectWithGallery={{ ...projectWithGallery, imageGallery: (projectWithGallery as any).imageGallery || [] }} />
-            </div>
-        </div>
-        {/* <Footer_projects /> */}
-        <Footer />
-    </>
+            {/* <Footer_projects /> */}
+            <Footer />
+        </>
     );
 }
 
