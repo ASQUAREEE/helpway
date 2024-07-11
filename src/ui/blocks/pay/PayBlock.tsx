@@ -14,6 +14,19 @@ export default function PayBlock() {
 
     const {translations} = useContext(LanguageContext)!
 
+    const copyInformation = () => {
+        const info = `
+            Власник облікового запису/Kontoinhaber/Account Owner/Владелец счета: HELPWAY GGMBH I.GR.
+            IBAN: DE04 7205 0000 0252 4807 36
+            BIC: AUGSDE77XXX
+        `;
+        navigator.clipboard.writeText(info).then(() => {
+            alert("Information copied to clipboard!");
+        }).catch(err => {
+            console.error("Failed to copy: ", err);
+        });
+    };
+
     return (
         <div className={style.container} id={mainPageIds.donate}>
             <div className={style.header}>
@@ -30,14 +43,13 @@ export default function PayBlock() {
                     <p>
                         {translations.pay.info2}
                     </p>
-                    <ClickItem name={"Lorem ipsum"} value={"dolar sit apet consectute adipsicing"}/>
+                    <ClickItem name={"Власник облікового запису/Kontoinhaber/Account Owner/Владелец счета"} value={"HELPWAY GGMBH I.GR."}/>
                     <div className={style.spacer}/>
-                    <ClickItem name={"Lorem ipsum"} value={"UA 45 6346346 256135345 1234234256"}/>
+                    <ClickItem name={"IBAN"} value={"DE04 7205 0000 0252 4807 36"}/>
                     <div className={style.spacer}/>
-                    <ClickItem name={"Lorem ipsum"} value={"1455632135451"}/>
+                    <ClickItem name={"BIC"} value={"AUGSDE77XXX"}/>
                     <div className={style.spacer}/>
-                    <Button type={"outline_light"} text={"Copy information"} customStyle={style.button} onClick={() => {
-                    }}/>
+                    <Button type={"outline_light"} text={"Copy information"} customStyle={style.button} onClick={copyInformation}/>
                 </div>
             </div>
         </div>
