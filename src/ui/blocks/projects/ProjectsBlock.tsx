@@ -164,7 +164,7 @@ export default function ProjectsBlock({userId}: {userId: string | undefined}) {
         <h3>
             {translations.projects.title}
         </h3>
-        <div className={style.buttons_type_layout}>
+        {/* <div className={style.buttons_type_layout}>
             <Button1
                 text={translations.projects.title}
                 type="primary"
@@ -172,7 +172,7 @@ export default function ProjectsBlock({userId}: {userId: string | undefined}) {
                 onClick={() => { }}
             />
 
-        </div>
+        </div> */}
         <div className={style.grid_container}>
         {
                     projects.length > 0 ? (

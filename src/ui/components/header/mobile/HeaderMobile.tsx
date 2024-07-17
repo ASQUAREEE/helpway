@@ -30,9 +30,9 @@ function MenuItem({name, link, subItems = [], onClose}: MenuItemProps) {
         )
     } else {
         return (
-            <a href={`/#projects`} className={style.menu_item} onClick={() => {onClose()}}>
-                {name}
-            </a>
+            <a href={link === "2" ? `/#projects` : `/#${link}`} className={style.menu_item}>
+        {name}
+    </a>
         )
     }
 }
