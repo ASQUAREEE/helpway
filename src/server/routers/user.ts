@@ -21,6 +21,10 @@ export const userRouter = router({
         return user;
     }),
 
+    getAllUsers: procedure.query(async () => {
+        return await prisma.user.findMany();
+    }),
+
     createUserIfNotExists: procedure
     .input(z.object({ id: z.string(), email: z.string()}))
       .mutation(async ({ ctx, input: {id,email} }) => {
@@ -41,6 +45,16 @@ export const userRouter = router({
       )
       
       }
+      }),
+
+      updateUserRole: procedure.input(z.object({
+        id: z.string(),
+        role: z.string(),
+      })).mutation(async ({ ctx, input: {id,role} }) => {
+        return await prisma.user.update({
+          where: { id },
+          data: { role },
+        })
       }),
 
 });

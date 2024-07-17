@@ -12,6 +12,8 @@ import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "@/utils/language/LanguageContext";
 import Footer from "@/ui/components/footer/Footer";
 import { useRouter } from "next/router";
+import { useToast } from "@/components/ui/use-toast";
+import Link from "next/link";
 
 const Page = () => {
     const { user } = useClerk();
@@ -24,6 +26,7 @@ const Page = () => {
     const languageContext = useContext(LanguageContext);
     const {translations} = useContext(LanguageContext)!
     const language = languageContext?.language;
+    const {toast} = useToast();
 
     useEffect(() => {
         switch (language) {
@@ -56,6 +59,16 @@ const Page = () => {
     const descriptionKey = `description_${languageCode}` as 'description_ua' | 'description_eng' | 'description_ru' | 'description_de';
     const description = projectWithGallery[descriptionKey];
 
+    const handleShareClick = () => {
+        navigator.clipboard.writeText(window.location.href);
+        toast({
+            title: 'Success',
+            description: 'URL copied to clipboard!',
+            variant: 'default',
+            duration: 5000,
+        });
+    };
+
     return (
         <>
             <Header />
@@ -69,10 +82,12 @@ const Page = () => {
                             <h1 className="text-2xl md:text-3xl font-bold text-gray-800">{projectWithGallery[`name_${languageCode}` as 'name_ua' | 'name_eng' | 'name_ru' | 'name_de']}</h1>
                             <p className="mt-4 text-base md:text-lg text-gray-600">{translations.pay.info}</p>
                             <div className="flex justify-center md:justify-start mt-4">
-                                <Button text={translations.donate} type="primary" onClick={() => { }} />
-                                {/* <span className="ml-4">
-                                    <Button text={translations.} type="primary" onClick={() => { }} />
-                                </span> */}
+                                <Link href="/#donate">
+                                    <Button text={translations.donate} type="primary" onClick={() => { }} />
+                                </Link>
+                                <span className="ml-4">
+                                    <Button text={translations.share} type="primary" onClick={handleShareClick} />
+                                </span>
                             </div>
                         </div>
                     </div>

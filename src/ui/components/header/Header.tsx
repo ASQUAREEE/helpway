@@ -44,7 +44,7 @@ export default function Header() {
     const menuItems: MenuItem[] = [
         {
             name: translations.header_menu.history.name,
-            link: "1",
+            link: "history",
             subItems: [
                 {
                     name: translations.header_menu.history.submenu.history,
