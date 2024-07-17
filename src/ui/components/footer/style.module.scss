@@ -1,142 +1,188 @@
 @import "/src/ui/styles/style_diimmens.module.scss";
 @import "/src/ui/styles/style_colors.module.scss";
 
-
 .container {
     padding: $padding_desktop;
     background: $style_color_dark;
     color: $style_color_text_secondary;
+    text-align: center;
 
     @media (max-width: 650px) {
         padding: $padding_mobile;
     }
 }
 
-.info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    @media (max-width: 650px) {
-        flex-direction: column;
-    }
-}
-
-.section_first {
-    flex: 1;
-
-    @media (max-width: 650px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 24px;
-    }
-
-    > h2 {
-        font-size: 32px;
-        font-weight: 600;
-        letter-spacing: 1.92px;
-
-        @media (max-width: 650px) {
-            text-align: center;
-            font-size: 24px;
-        }
-    }
-}
-
-.social_buttons {
-    display: flex;
-    flex-direction: row;
-    margin-top: 24px;
-
-    @media (max-width: 650px) {
-        justify-content: center;
-    }
-
-}
-
-.social_container {
+.logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    border-radius: 350px;
-    width: 54px;
-    height: 54px;
-    border-color: $style_color_text_secondary;
-    fill: $style_color_text_secondary;
-    cursor: pointer;
-    border-width: 1px;
-    border-style: solid;
-    margin-right: 16px;
+    margin-bottom: $padding_desktop;
 
-    transition: all .2s ease-in-out;
+    @media (max-width: 650px) {
+        margin-bottom: $padding_mobile;
+        margin-top: $padding_mobile;
+    }
+}
 
-    &:hover {
-        opacity: 0.5;
+.subtitle {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) { // Tablet
+        flex-wrap: wrap;
     }
 
+    @media (max-width: 480px) { // Phone
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .email {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+        margin-right: 20px; // Add margin to separate from other items
+
+        @media (max-width: 480px) { // Phone
+            margin-right: 0;
+            margin-bottom: 16px;
+        }
+
+        svg {
+            margin-right: 8px;
+        }
+
+        p {
+            margin-left: 10px;
+            color: $style_color_text_secondary;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+
+            @media (max-width: 650px) {
+                font-size: 16px;
+            }
+        }
+    }
+
+    .social_buttons {
+        display: flex;
+        justify-content: center;
+        margin-left: 20px; // Add margin to separate from email and language switcher
+
+        @media (max-width: 480px) { // Phone
+            margin-left: 0;
+            margin-top: 16px;
+        }
+
+        .social_container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            border-color: $style_color_text_secondary;
+            fill: $style_color_text_secondary;
+            cursor: pointer;
+            border-width: 1px;
+            border-style: solid;
+            margin-right: 8px;
+
+            transition: all .2s ease-in-out;
+
+            &:hover {
+                opacity: 0.5;
+            }
+
+            @media (max-width: 480px) { // Phone
+                margin-right: 0;
+                margin-bottom: 16px;
+            }
+        }
+    }
 }
 
 .items {
-
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 10px;
 
     @media (max-width: 650px) {
-        align-items: center;
-        justify-content: center;
         margin-top: 34px;
     }
 
-    > a {
-        display: block;
-        cursor: pointer;
-        transition: color .3s ease;
-        font-size: 18px;
-        font-weight: 400;
-        margin-right: 16px;
+    .row {
+        display: flex;
+        justify-content: space-between; // Ensure even spacing between items
+        width: 100%; // Ensure the row takes full width
+        max-width: 800px; // Adjust as needed for your design
         margin-bottom: 10px;
 
-        -webkit-tap-highlight-color: transparent;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-
-        &:focus {
-            outline: none;
+        @media (max-width: 768px) { // Tablet
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        &:hover {
-            color: $style_color_green;
+        @media (max-width: 480px) { // Phone
+            flex-direction: column;
+            align-items: center;
+        }
+
+        > a {
+            display: block;
+            cursor: pointer;
+            transition: color .3s ease;
+            font-size: 18px;
+            font-weight: 400;
+            margin-right: 16px;
+            margin-bottom: 10px;
+
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:hover {
+                color: $style_color_green;
+            }
+
+            &:last-child {
+                margin-right: 0; // Remove margin from the last item in the row
+            }
+
+            @media (max-width: 480px) { // Phone
+                margin-right: 0;
+                margin-bottom: 16px;
+            }
         }
     }
 }
 
 .section_second {
-    flex: 1;
-    margin-left: 600px;
-    margin-top: 250px;
-
-    @media (max-width: 1200px) {
-        margin-left: 400px; // Adjust margin for medium screens
-        margin-top: 200px;
-    }
-
-    @media (max-width: 900px) {
-        margin-left: 100px; // Adjust margin for smaller screens
-        margin-top: 150px;
-    }
-
-    @media (max-width: 650px) {
-        margin-left: 0; // Adjust margin for mobile devices
-        margin-top: 34px;
-    }
+    margin-top: 20px;
+    text-align: center;
 
     @media (max-width: 650px) {
         margin-top: 34px;
@@ -146,16 +192,9 @@
         font-size: 18px;
         font-weight: 400;
         @media (max-width: 650px) {
-            margin-left: 40px; 
+            margin-left: 40px;
         }
     }
-}
-
-.buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 24px;
 }
 
 .promo {
@@ -170,47 +209,5 @@
         font-size: 11px;
         font-weight: 300;
         margin-bottom: 16px;
-    }
-
-}
-
-.logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: $padding_desktop;
-    @media (max-width: 650px) {
-        margin-bottom: $padding_mobile;
-        margin-top: $padding_mobile;
-    }
-}
-
-.email_full {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 15px;
-    margin-right: 16px;
-    border-width: 1px;
-    border-style: solid;
-    fill: red;
-    border-color: $style_color_text_secondary;
-    border-radius: 100px;
-
-    @media (max-width: 650px) {
-        padding: 10px 16px;
-    }
-
-    > p {
-        margin-left: 10px;
-        color: $style_color_text_secondary;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 400;
-
-        @media (max-width: 650px) {
-            font-size: 16px;
-        }
     }
 }

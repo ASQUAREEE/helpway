@@ -49,6 +49,8 @@ export default function PayBlock() {
                     <div className={style.spacer}/>
                     <ClickItem name={"BIC"} value={"AUGSDE77XXX"}/>
                     <div className={style.spacer}/>
+                    <ClickItem name={"PayPal"} value={<a href="https://www.paypal.me/HelpWay" target="_blank" rel="noopener noreferrer">https://www.paypal.me/HelpWay</a>}/>
+                    <div className={style.spacer}/>
                     <Button type={"outline_light"} text={"Copy information"} customStyle={style.button} onClick={copyInformation}/>
                 </div>
             </div>
@@ -58,7 +60,7 @@ export default function PayBlock() {
 
 interface props {
     name: string,
-    value: string,
+    value: React.ReactNode, // Change from string to React.ReactNode
 }
 
 function ClickItem({name, value}: props) {
