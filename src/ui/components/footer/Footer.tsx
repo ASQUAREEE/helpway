@@ -11,6 +11,7 @@ import Artevide from "@/../public/svg/artevide.svg"
 import {email, mainPageIds} from "@/utils/Const";
 import {useContext} from "react";
 import {LanguageContext} from "@/utils/language/LanguageContext";
+import Link from "next/link";
 
 export default function Footer() {
 
@@ -19,7 +20,9 @@ export default function Footer() {
     return (
         <div className={style.container}>
             <div className={style.logo}>
+            <Link href="/">
                 <Logo/>
+            </Link>
             </div>
             <div className="-mt-8 mb-2">
             <h2 className={style.subtitle}>

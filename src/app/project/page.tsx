@@ -79,8 +79,8 @@ const Page = () => {
                     </div>
                     <div className="text-center md:text-left w-full md:w-1/2 lg:w-2/3">
                         <div className="max-w-lg lg:max-w-2xl mx-auto md:mx-0">
-                            <h1 className="text-2xl md:text-3xl font-bold text-gray-800">{projectWithGallery[`name_${languageCode}` as 'name_ua' | 'name_eng' | 'name_ru' | 'name_de']}</h1>
-                            <p className="mt-4 text-base md:text-lg text-gray-600">{translations.pay.info}</p>
+                            <h1 className="text-2xl md:text-3xl font-bold text-gray-700">{projectWithGallery[`name_${languageCode}` as 'name_ua' | 'name_eng' | 'name_ru' | 'name_de']}</h1>
+                            <p className="mt-4 text-base md:text-lg text-gray-500">{translations.pay.info}</p>
                             <div className="flex justify-center md:justify-start mt-4">
                                 <Link href="/#donate">
                                     <Button text={translations.donate} type="primary" onClick={() => { }} />

@@ -7,14 +7,17 @@ import Instagram from "@/../public/svg/ic_instagram.svg"
 import Behance from "@/../public/svg/ic_behance.svg"
 import Logo from "@/../public/svg/logo_white.svg"
 import Artevide from "@/../public/svg/artevide.svg"
+import Link from "next/link"
 
 export default function Footer_projects() {
 
     return (
         <div className={style.container}>
             <div className={style.logo}>
-                        <Logo />
-                    </div>
+                <Link href="/">
+                    <Logo />
+                </Link>
+            </div>
             <div className={style.container_inner}>
                 <div>
 

@@ -20,6 +20,9 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useClerk } from '@clerk/nextjs';
+import ProjectsBlock from '@/ui/blocks/projects/ProjectsBlock';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 interface User {
   id: string;
@@ -34,6 +37,7 @@ const AdminPanel = () => {
   const { mutate: updateUserRoleApi } = trpc.user.updateUserRole.useMutation();
   const {mutateAsync: getUser} = trpc.user.getUser.useMutation();
   const { data: usersFromServer, isLoading } = trpc.user.getAllUsers.useQuery();
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,6 +45,7 @@ const AdminPanel = () => {
         const user = await getUser({ id: userId });
         if (user && user.role === 'admin') {
           setUsers(usersFromServer);
+          setIsAdmin(true);
         }
       }
     };
@@ -56,7 +61,12 @@ const AdminPanel = () => {
 
   if (isLoading) return <p>Loading...</p>;
 
+  console.log(user)
+
+  if (!user) return <Link href="/auth/sign-in"><Button className="ml-5 mt-2 rounded-3xl">Sign In</Button></Link>;
+
   return (
+    <div>
     <div className="mx-auto p-4">
       <Label>Admin Panel</Label>
       <Table>
@@ -95,6 +105,8 @@ const AdminPanel = () => {
           </TableRow>
         </TableFooter>
       </Table>
+    </div>
+   {isAdmin &&  <ProjectsBlock userId={user?.id} />}
     </div>
   );
 };
