@@ -6,6 +6,7 @@ import style from "./style.module.scss"
 import Menu from "@/../public/svg/menu.svg"
 import {Drawer} from "antd";
 import Logo from "@/../public/svg/logo_black.svg"
+import Link from "next/link";
 
 interface MenuItemProps extends MenuItem {
   onClose: () => void;
@@ -53,7 +54,9 @@ export default function HeaderMobile(menuItems: MenuItem[], onClose: () => void,
                 open={openDrawer}>
                 <div className={style.menu}>
                     <div className={style.logo}>
-                        <Logo/>
+                        <Link href="/">
+                            <Logo/>
+                        </Link>
                     </div>
                     {
                         menuItems.map((item) => (

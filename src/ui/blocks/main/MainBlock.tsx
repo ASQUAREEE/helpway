@@ -12,6 +12,7 @@ import ArrowIcon from "@/../public/svg/arrow_link.svg"
 import {LanguageContext} from '@/utils/language/LanguageContext';
 import {mainPageIds} from "@/utils/Const";
 import {useRouter} from "next/navigation";
+import Link from 'next/link';
 
 export function MainBlock() {
 
@@ -53,7 +54,9 @@ export function MainBlock() {
             {
                 isMobile && (
                     <div className={style.logo}>
-                        <Logo/>
+                        <Link href="/">
+                            <Logo/>
+                        </Link>
                     </div>
                 )
             }

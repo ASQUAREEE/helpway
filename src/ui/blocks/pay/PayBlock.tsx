@@ -16,7 +16,7 @@ export default function PayBlock() {
 
     const copyInformation = () => {
         const info = `
-            Власник облікового запису/Kontoinhaber/Account Owner/Владелец счета: HELPWAY GGMBH I.GR.
+            ${translations.account}: HELPWAY GGMBH I.GR.
             IBAN: DE04 7205 0000 0252 4807 36
             BIC: AUGSDE77XXX
         `;
@@ -43,7 +43,7 @@ export default function PayBlock() {
                     <p>
                         {translations.pay.info2}
                     </p>
-                    <ClickItem name={"Власник облікового запису/Kontoinhaber/Account Owner/Владелец счета"} value={"HELPWAY GGMBH I.GR."}/>
+                    <ClickItem name={translations.account} value={"HELPWAY GGMBH I.GR."}/>
                     <div className={style.spacer}/>
                     <ClickItem name={"IBAN"} value={"DE04 7205 0000 0252 4807 36"}/>
                     <div className={style.spacer}/>
