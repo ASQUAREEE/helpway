@@ -63,7 +63,7 @@ const AdminPanel = () => {
 
   console.log(user)
 
-  if (!user) return <Link href="/auth/sign-in"><Button className="ml-5 mt-2 rounded-3xl">Sign In</Button></Link>;
+  if (!user) return <><Link href="/auth/sign-in"><Button className="ml-5 mt-2 rounded-3xl">Sign In</Button></Link><Link href="/auth/sign-up"><Button className="ml-5 mt-2 rounded-3xl">Sign Up</Button></Link></>;
 
   return (
     <div>
