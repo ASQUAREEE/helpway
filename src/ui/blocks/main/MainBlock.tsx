@@ -6,8 +6,8 @@ import {useContext, useEffect, useState} from "react";
 import Button from '@/ui/components/button/Button';
 import Image from "next/image";
 import Logo from "@/../public/svg/logo_black.svg"
-import FirstImage from "@/../public/img/mainblockfirstimg.png"
-import SecondImage from "@/../public/img/mainblocksecondimg.png"
+import FirstImage from "@/../public/img/mainblockfirstimg1.jpg"
+import SecondImage from "@/../public/img/second.jpg"
 import ArrowIcon from "@/../public/svg/arrow_link.svg"
 import {LanguageContext} from '@/utils/language/LanguageContext';
 import {mainPageIds} from "@/utils/Const";

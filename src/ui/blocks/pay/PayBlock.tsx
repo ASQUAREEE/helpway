@@ -38,7 +38,7 @@ export default function PayBlock() {
                 </p>
             </div>
             <div className={style.info_container}>
-                <Image alt={"image"} src={kids} priority className={style.image}/>
+                <Image alt={"image"} src='/img/img.png' width={500} height={180} priority className={style.image}/>
                 <div className={style.info}>
                     <p>
                         {translations.pay.info2}
