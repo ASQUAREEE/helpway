@@ -18,7 +18,10 @@ const HomePage = () => {
 
     return (
         <div className="flex justify-center items-center h-screen">
-           {!user && <Link href="/auth/sign-in"><Button className="ml-5 mt-2 rounded-3xl">Sign In</Button></Link>}
+           {!user && <><Link href="/auth/sign-in"><Button className="ml-5 mt-2 rounded-3xl">Sign In</Button></Link><Link href="/auth/sign-up"><Button className="ml-5 mt-2 rounded-3xl">Sign Up</Button></Link>
+           
+           <Link href="/auth/sign-up"><Button className="ml-5 mt-2 rounded-3xl">Sign Up</Button></Link>
+           </>}
                 {user && <SignOutButton><Button className="ml-5 mt-2 rounded-3xl">Sign Out</Button></SignOutButton>}
         </div>
     );
