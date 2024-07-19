@@ -23,7 +23,7 @@ export default function HistoryBlock() {
     }
 
     useEffect(() => {
-        setCanShowMore(width <= 1500)
+        setCanShowMore(width <= 1800)
     }, [width]);
 
     return (

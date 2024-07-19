@@ -78,6 +78,14 @@ export const projectRouter = router({
       }),
 
       deleteProject: procedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input: { id } }) => {
+        // Delete related ImageGallery records first
+        await prisma.imageGallery.deleteMany({
+          where: {
+            projectId: id,
+          },
+        });
+
+        // Then delete the Project
         return await prisma.project.delete({
           where: {
             id,
