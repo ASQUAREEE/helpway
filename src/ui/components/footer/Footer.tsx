@@ -33,9 +33,11 @@ export default function Footer() {
                 <div className={style.email}>
                     <Email fill={"#797979"}/>
                     <p>{email}</p>
-                </div>
-                <div className="mr-16 -ml-2">
-                    <LanguageSwitcher theme={"secondary"} type={"compact"}/>
+                    <div className="ml-4">
+                    <div className={style.languageSwitcher}>
+                        <LanguageSwitcher theme={"secondary"} type={"compact"}/>
+                    </div>
+                    </div>
                 </div>
                 <div className={style.social_buttons}>
                     <div className={style.social_container}>
