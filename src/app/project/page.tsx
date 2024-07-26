@@ -29,8 +29,10 @@ const Page = () => {
     const { data: projectWithGallery, isPending, refetch } = name_eng ? trpc.project.getProjectWithGalleryById.useQuery({ name_eng: name_eng as string }) : { data: null, isPending: false, refetch: () => {} };
     const languageContext = useContext(LanguageContext);
     const {translations} = useContext(LanguageContext)!
+    const {mutateAsync: getUser} = trpc.user.getUser.useMutation();
     const language = languageContext?.language;
     const {toast} = useToast();
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [editedDonateText, setEditedDonateText] = useState({
@@ -57,6 +59,20 @@ const Page = () => {
             });
         },
     });
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            if (userId) {
+                const user = await getUser({ id: userId });
+            if (user && user.role === 'admin') {
+                setIsAdmin(true);
+                }
+            }
+        };
+        fetchUser();
+
+    }, [userId]);
+
 
     useEffect(() => {
         if (projectWithGallery) {
@@ -139,9 +155,9 @@ const Page = () => {
                                 </p>
                                 <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                                     <DialogTrigger asChild>
-                                        <Shadcn variant="ghost" size="icon" className="ml-2">
+                                        {isAdmin && <Shadcn variant="ghost" size="icon" className="ml-2">
                                             <Edit className="h-4 w-4" />
-                                        </Shadcn>
+                                        </Shadcn>}
                                     </DialogTrigger>
                                     <DialogContent>
                                         <DialogHeader>
