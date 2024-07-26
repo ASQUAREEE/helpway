@@ -131,6 +131,23 @@ export const projectRouter = router({
         });
       }),
 
+      editDonateText: procedure
+        .input(z.object({
+          id: z.string(),
+          donateText_eng: z.string().optional(),
+          donateText_ua: z.string().optional(),
+          donateText_ru: z.string().optional(),
+          donateText_de: z.string().optional(),
+        }))
+        .mutation(async ({ ctx, input }) => {
+          const { id, ...donateTexts } = input;
+          
+          const updatedProject = await prisma.project.update({
+            where: { id },
+            data: donateTexts,
+          });
 
+          return updatedProject;
+        }),
 
 });

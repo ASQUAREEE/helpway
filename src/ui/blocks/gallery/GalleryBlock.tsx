@@ -149,48 +149,44 @@ export default function GalleryBlock({ isHeader = false, userId, projectWithGall
 
 
     return (
-        <div>
-            <Image.PreviewGroup preview={{ movable: false }}>
-                <div className={style.container} id={mainPageIds.gallery}>
-                    <h3> {translations.header_menu.gallery} </h3>
-                    <div className={style.content}>
-                        {/* <div className={style.folders}>
-                            {projectWithGalleryFromApi?.map((item) => (
-                                <Button key={item.id} customStyle={style.button} text={item.name} type={projectId === item.id ? "primary" : "outline"} onClick={() => { setImages(item.imageGallery); setProjectId(item.id); }} />
-                            ))}
-                        </div> */}
-
-                        <div className={style.images}>
-                            {role && role === "admin" && (
-                                <ShadcnButton className="h-16 w-16 mt-8 ml-16" onClick={handleOpenModal}>
-                                    <p className="text-4xl">+</p>
-                                </ShadcnButton>
-                            )}
-                            {images.map((image, index) => (
-                                <div className="relative" key={image.id}>
-                                    {role && role === 'admin' && (
-                                        <button 
-                                            className="absolute top-2 right-2 bg-white p-1 rounded-full text-red-500 hover:text-red-700 z-10" 
-                                            onClick={() => {
-                                                setDeleteImageId(image.id);
-                                                setDeleteImageUrl(image.imageUrl);
-                                                setIsDeleteModalOpen(true);
-                                            }}
-                                        >
-                                            <Trash className="w-4 h-4" />
-                                        </button>
-                                    )}
-                                     <Image
-                                        preview={{ mask: (<div />), maskClassName: style.image }}
-                                        className={`${style.image} w-48 h-48`}
-                                        src={image.imageUrl}
-                                    />
-                                </div>
-                            ))}
+        <div className="flex justify-center items-center min-h-screen">
+            <div className="w-full max-w-6xl px-4">
+                <Image.PreviewGroup preview={{ movable: false }}>
+                    <div className={`${style.container} text-center`} id={mainPageIds.gallery}>
+                        <h3 className="text-2xl font-bold mb-6">{translations.header_menu.gallery}</h3>
+                        <div className={`${style.content} flex justify-center`}>
+                            <div className={`${style.images} grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4`}>
+                                {role && role === "admin" && (
+                                    <ShadcnButton className="h-48 w-full flex items-center justify-center" onClick={handleOpenModal}>
+                                        <p className="text-4xl">+</p>
+                                    </ShadcnButton>
+                                )}
+                                {images.map((image) => (
+                                    <div className="relative" key={image.id}>
+                                        {role && role === 'admin' && (
+                                            <button 
+                                                className="absolute top-2 right-2 bg-white p-1 rounded-full text-red-500 hover:text-red-700 z-10" 
+                                                onClick={() => {
+                                                    setDeleteImageId(image.id);
+                                                    setDeleteImageUrl(image.imageUrl);
+                                                    setIsDeleteModalOpen(true);
+                                                }}
+                                            >
+                                                <Trash className="w-4 h-4" />
+                                            </button>
+                                        )}
+                                        <Image
+                                            preview={{ mask: (<div />), maskClassName: style.image }}
+                                            className={`${style.image} w-full h-48 object-cover`}
+                                            src={image.imageUrl}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </Image.PreviewGroup>
+                </Image.PreviewGroup>
+            </div>
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
                 <DialogContent>
                     <DialogHeader>

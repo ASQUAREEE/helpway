@@ -52,19 +52,19 @@ export default function Footer() {
                 </div>
             </div>
             <div className={style.items}>
-    <div className={style.row}>
-        <a href={`/#${mainPageIds.main}`}>{translations.footer.home}</a>
-        <a href={`/#${mainPageIds.history}`}>{translations.header_menu.history.submenu.history}</a>
-        <a href={`/#${mainPageIds.mission}`}>{translations.header_menu.history.submenu.mission}</a>
-        <a href={`/#${mainPageIds.work}`}>{translations.header_menu.history.submenu.methods}</a>
-    </div>
-    <div className={style.row}>
-        <a href={`/#${mainPageIds.project.ready}`}>{translations.header_menu.projects.name}</a>
-        <a href={`/#${mainPageIds.donate}`}>{translations.donate}</a>
-        <a href={`/#${mainPageIds.gallery}`}>{translations.header_menu.gallery}</a>
-        <a href={`/#${mainPageIds.partners}`}>{translations.header_menu.partner}</a>
-    </div>
-</div>
+                <div className={style.row}>
+                    <a href={`/#${mainPageIds.main}`}>{translations.footer.home}</a>
+                    <a href={`/#${mainPageIds.history}`}>{translations.header_menu.history.submenu.history}</a>
+                    <a href={`/#${mainPageIds.mission}`}>{translations.header_menu.history.submenu.mission}</a>
+                    <a href={`/#${mainPageIds.work}`}>{translations.header_menu.history.submenu.methods}</a>
+                </div>
+                <div className={style.row}>
+                    <a href={`/#${mainPageIds.project.ready}`}>{translations.header_menu.projects.name}</a>
+                    <a href={`/#${mainPageIds.donate}`}>{translations.donate}</a>
+                    <a href={`/#${mainPageIds.gallery}`}>{translations.header_menu.gallery}</a>
+                    <a href={`/#${mainPageIds.partners}`}>{translations.header_menu.partner}</a>
+                </div>
+            </div>
             <div className={style.section_second}>
                 <p>{translations.partners.info}</p>
             </div>

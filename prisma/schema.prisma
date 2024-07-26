@@ -32,6 +32,11 @@ model Project {
   description_ru String? @db.VarChar(8000)
   description_de String? @db.VarChar(8000)
 
+  donateText_eng String? @default("Do not withhold good from those who deserve it, when it is in your power to act")
+  donateText_ua String? @default("НДавати охоче - значить більше ніж давати")
+  donateText_ru String? @default("Давать охотно - значит больше чем много давать")
+  donateText_de String? @default("Bereitwillig zu geben bedeutet mehr als zu geben")
+
   imageUrl String?
   projectLink String?
   imageGallery ImageGallery[]

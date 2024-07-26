@@ -128,29 +128,26 @@
 
     .row {
         display: flex;
-        justify-content: space-between; // Ensure even spacing between items
-        width: 100%; // Ensure the row takes full width
-        max-width: 800px; // Adjust as needed for your design
-        margin-bottom: 10px;
-
-        @media (max-width: 768px) { // Tablet
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        @media (max-width: 480px) { // Phone
-            flex-direction: column;
-            align-items: center;
-        }
+        justify-content: flex-start; // Change to flex-start for left alignment
+        flex-wrap: wrap; // Allow wrapping
+        width: 100%;
+        max-width: 800px;
+        margin-bottom: 20px;
 
         > a {
-            display: block;
-            cursor: pointer;
-            transition: color .3s ease;
-            font-size: 18px;
-            font-weight: 400;
-            margin-right: 16px;
-            margin-bottom: 10px;
+            flex: 0 0 calc(25% - 16px); // Slightly reduce width to account for margin
+            text-align: left; // Align text to the left
+            margin-right: 16px; // Add right margin for spacing
+            margin-bottom: 16px;
+
+            @media (max-width: 768px) {
+                flex: 0 0 calc(50% - 16px); // 50% width on tablets
+            }
+
+            @media (max-width: 480px) {
+                flex: 0 0 100%; // Full width on phones
+                margin-right: 0; // Remove right margin on full width
+            }
 
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
@@ -168,13 +165,14 @@
                 color: $style_color_green;
             }
 
-            &:last-child {
-                margin-right: 0; // Remove margin from the last item in the row
+            &:nth-child(4n) {
+                margin-right: 0; // Remove right margin for every 4th item
             }
 
-            @media (max-width: 480px) { // Phone
-                margin-right: 0;
-                margin-bottom: 16px;
+            @media (max-width: 768px) {
+                &:nth-child(2n) {
+                    margin-right: 0; // Remove right margin for every 2nd item on tablets
+                }
             }
         }
     }
