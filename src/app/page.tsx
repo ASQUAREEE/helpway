@@ -39,7 +39,9 @@ const Home: NextPage = () => {
                 <HowDoWorkBlock/>
                 <ProjectsBlock userId={user?.id} />
                 <PayBlock/>
-                <GalleryBlock userId={user?.id} isHeader/>
+                <div className="flex justify-center items-center w-full">
+                    <GalleryBlock userId={user?.id} isHeader/>
+                </div>
                 <PartnersBlock/>
                 <Footer/>
             </div>

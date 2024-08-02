@@ -31,8 +31,10 @@ export default function Footer() {
             </div>
             <div className={style.info}>
                 <div className={style.email}>
-                    <Email fill={"#797979"}/>
-                    <p>{email}</p>
+                    <div className="flex items-center px-6 py-4 border border-[#797979] rounded-full">
+                        <Email fill={"#797979"}/>
+                        <p className="ml-2">{email}</p>
+                    </div>
                     <div className="ml-4">
                     <div className={style.languageSwitcher}>
                         <LanguageSwitcher theme={"secondary"} type={"compact"}/>
@@ -65,9 +67,9 @@ export default function Footer() {
                     <a href={`/#${mainPageIds.partners}`}>{translations.header_menu.partner}</a>
                 </div>
             </div>
-            <div className={style.section_second}>
+            {/* <div className={style.section_second}>
                 <p>{translations.partners.info}</p>
-            </div>
+            </div> */}
             <div className={style.promo}>
                 <p>
                     Design & Dev:
